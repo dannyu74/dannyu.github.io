@@ -1,0 +1,339 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>ｗｗｗ.ｄａｎｎｙｕ.ｃｏｍ</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<meta name="viewport" content="width=1024" />
+		<link rel="stylesheet" href="common.css" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="common.js"></script>
+		<script src="img/jquery.scrollex.js"></script>
+		<style>
+
+			html, body {
+				height: 100%;
+			}
+
+			#main {
+				height: 100%;
+				padding: 0;
+			}
+
+			.item {
+				position: relative;
+				height: 100%;
+				text-align: center;
+			}
+
+				.item:before {
+					content: '';
+					display: inline-block;
+					height: 100%;
+					vertical-align: middle;
+				}
+
+				.item .container {
+					display: inline-block;
+					vertical-align: middle;
+					-moz-perspective: 900px;
+					-webkit-perspective: 900px;
+					-o-perspective: 900px;
+					-ms-perspective: 900px;
+					perspective: 900px;
+				}
+
+					.item .container > :last-child {
+						margin-bottom: 0;
+					}
+
+					.item .container .title {
+						display: inline-block;
+						background: #fff;
+						padding: 0.5em 1em;
+						border-radius: 0.25em;
+						font-size: 2.5em;
+						margin: 0 0 1.5em 0;
+						-moz-transform-origin: 50% 50%;
+						-webkit-transform-origin: 50% 50%;
+						-o-transform-origin: 50% 50%;
+						-ms-transform-origin: 50% 50%;
+						transform-origin: 50% 50%;
+					}
+
+					.item .container p {
+						font-size: 1.5em;
+						line-height: 1.5em;
+						margin: 0;
+					}
+
+				.item .next {
+					position: absolute;
+					bottom: 2.5em;
+					left: 50%;
+					width: 5em;
+					height: 5em;
+					margin-left: -2.5em;
+					line-height: 5em;
+					border-radius: 100%;
+					color: #784212;
+					text-decoration: none;
+					border: solid 1px #784212;
+				}
+
+			#header {
+			}
+
+				#header .title {
+					color: #61210B;
+				}
+
+
+			#one2 {
+				background-color: #F2F4F4;
+			}
+
+				#one2 .title {
+					color: #616A6B;
+				}
+
+
+			#one {
+				background-color: #FBF5EF;
+			}
+
+				#one .title {
+					color: #DF3A01;
+				}
+
+
+			#one1 {
+				background-color: #F9EBEA;
+			}
+
+				#one1 .title {
+					color: #922B21;
+				}
+
+
+			#two {
+				background-color: #EAFAF1;
+			}
+
+				#two .title {
+					color: #1E8449;
+				}
+
+
+			#two1 {
+				background-color: #FEF5E7;
+			}
+
+				#two1 .title {
+					color: #9C640C;
+				}
+
+
+			#three {
+				background-color: #EBF5FB;
+			}
+
+				#three .title {
+					color: #2874A6;
+				}
+
+			#four {
+				background-color: #F4ECF7;
+			}
+
+				#four .title {
+					color: #6C3483;
+				}
+
+			#five {
+				background-color: #E8F8F5;
+			}
+
+				#five .title {
+					color: #117864;
+				}
+		</style>
+		<script>
+
+			/* jquery.scrolly v0.1 | (c) n33 | n33.co @n33co | MIT */
+			(function(e){var t="click.scrolly";e.fn.scrolly=function(r,i){var s=e(this);return r||(r=1e3),i||(i=0),s.off(t).on(t,function(t){var n,s,o,u=e(this),a=u.attr("href");a.charAt(0)=="#"&&a.length>1&&(n=e(a)).length>0&&(s=n.offset().top,u.hasClass("scrolly-centered")?o=s-(e(window).height()-n.outerHeight())/2:(o=Math.max(s,0),i&&(typeof i=="function"?o-=i():o-=i)),t.preventDefault(),e("body,html").stop().animate({scrollTop:o},r,"swing"))}),s}})(jQuery);
+
+			$(function() {
+
+				$('.item').scrollex({
+
+					// Scroll event: Perform various CSS tweaks based on the user's progress through this element.
+						scroll: function(progress) {
+
+							var $this = $(this),
+								$container = $this.find('.container'),
+								$title = $this.find('.title'),
+								$p = $this.find('p'),
+								$next = $this.find('.next'),
+								x;
+
+							// Title.
+
+								// Rotation.
+									x = (progress - 0.5) * 540;
+
+									$title
+										.css('-moz-transform', 'rotateX(' + x + 'deg)')
+										.css('-webkit-transform', 'rotateX(' + x + 'deg)')
+										.css('-o-transform', 'rotateX(' + x + 'deg)')
+										.css('-ms-transform', 'rotateX(' + x + 'deg)')
+										.css('transform', 'rotateX(' + x + 'deg)');
+
+								// Opacity.
+									if (progress > 0.5)
+										x = 1 - progress;
+									else
+										x = progress;
+
+									x = Math.max(0, Math.min(1, x * 2));
+
+									$title.css('opacity', x);
+
+							// Paragraph.
+
+								// Opacity.
+									if (progress > 0.5)
+										x = 1 - progress;
+									else
+										x = progress;
+
+									x = Math.max(0, Math.min(1, x * 2));
+
+									$p.css('opacity', x);
+
+							// Next.
+
+								// Opacity.
+									x = 1 - (Math.max(0, progress - 0.5) * 1.5);
+
+									$next.css('opacity', x)
+
+								// Scale.
+									x = 1 - (Math.max(0, progress - 0.5));
+
+									$next
+										.css('-moz-transform', 'scale(' + x + ')')
+										.css('-webkit-transform', 'scale(' + x + ')')
+										.css('-o-transform', 'scale(' + x + ')')
+										.css('-ms-transform', 'scale(' + x + ')')
+										.css('transform', 'scale(' + x + ')');
+
+								// Scrolly.
+									$next.scrolly(3000);
+
+						}
+
+				});
+
+			});
+
+		</script>
+	</head>
+	<body>
+		<div id="main">
+
+			<!-- Header -->
+				<header class="item" id="header">
+					<div class="container">
+						<h1 class="title">DD Shop</h1>
+						<p>我們專找合適的產品</p>
+						<p><a href=http://www.dannyu.com/shop/form.html target=_blank>訂購產品表單</a></p>
+					</div>
+					<a href="#one2" class="next">繼續</a>
+				</header>
+
+			<!-- Items -->
+				<section class="item" id="one2">
+					<div class="container">
+						<h2 class="title">識貨就當然祇會要 <b>2016暴風版$50</b> 大版$80</h2>
+						<p>暴風版～摩打勁左,去到７Ｗ比舊版５Ｗ勁，大版有問題,不建議。</p>
+						<p><img src=img/f95b.jpg width=450></p>
+					</div>
+					<a href="#one" class="next">Next</a>
+				</section>
+
+				<section class="item" id="one">
+					<div class="container">
+						<h2 class="title">4 ｘ USB ＄８０</h2>
+						<p>佔用一個插蘇位而有4個usb出去插電，總輸出率最高4.4A！<p>原生2腳11插，附帶13A 香港插頭！家居旅行必備！</p>
+						<p><img src=img/4usb2.jpg width=450><img src=img/4usb3.jpg width=450></p>
+					</div>
+					<a href="#one1" class="next">Next</a>
+				</section>
+
+
+				<section class="item" id="one1">
+					<div class="container">
+						<h2 class="title">6 ｘ USB ＄１２０</h2>
+						<p>暫時最新款！快叉～六頭7A，有高通2.0專位 貴價手機必選！</p>
+						<p><img src=img/6USB7AB.jpg width=450><img src=img/6USB7A.jpg width=450></p>
+					</div>
+					<a href="#two" class="next">Next</a>
+				</section>
+
+
+				<section class="item" id="two">
+					<div class="container">
+						<h2 class="title">3 + 3USB 拖板＄９０</h2>
+						<p>香港合用13A香港插頭！直插ＵＳＢ叉電，無需駁ＵＳＢ火牛，不浪費插蘇位！</p>
+						<p><img src=img/socket1.jpg width=450><img src=img/socket2.jpg width=450></p>
+					</div>
+					<a href="#two1" class="next">Next</a>
+				</section>
+
+				<section class="item" id="two1">
+					<div class="container">
+						<h2 class="title">3 + 4USB 拖板＄１００</h2>
+						<p>都是香港插頭，高貴專用，金屬片 + 銀邊包裙</p>
+						<p><img src=img/socket3.jpg height=250><img src=img/socket4.jpg height=250></p>
+					</div>
+					<a href="#three" class="next">Next</a>
+				</section>
+
+
+				<section class="item" id="three">
+					<div class="container">
+						<h2 class="title">USB線 2頭蛇＄４０</h2>
+						<p>Android & Iphone 專用，不再煩腦！多色多款，隨機出貨！</p>
+						<p><img src=img/2in1a.jpg height=250><img src=img/2in1b.jpg height=250></p>
+					</div>
+					<a href="#four" class="next">Next</a>
+				</section>
+
+				<section class="item" id="four">
+					<div class="container">
+						<h2 class="title">出租 Pocket Wifi蛋 或 世界/香港 Sim Card</h2>
+						<p>Wifi蛋日租約$25 ，世界 Sim Card 另計，香港 Sim Card 1G Data 約 $40</p>
+					</div>
+					<a href="#five" class="next">Next</a>
+				</section>
+
+				<section class="item" id="five">
+					<div class="container">
+						<h2 class="title">W-King 藍牙播放器＄１８０</h2>
+						<p>任撞任跌，聲音超讚！有收音機，可插micro sd 或 AUX</p>
+						<p><img src=img/wking1.jpg height=250><img src=img/wking.jpg height=250></p>
+					</div>
+					<a href="#header" class="next">Top</a>
+				</section>
+
+
+			<!-- Footer -->
+				<footer id="footer">
+					<font color=yellow><a href="http://www.dannyu.com"><font color=blue>D</font>ennis & <font color=blue>D</font>anny</a></font>
+				</footer>
+
+		</div>
+	</body>
+</html>
