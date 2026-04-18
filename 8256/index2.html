@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danny Yu AI 8256</title>
+    <base target="_blank">
+    <style>
+        /* 1. 深色系動態背景 - 使用深藍、深紫與黑色的低亮度漸變 */
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: "PingFang HK", "Microsoft JhengHei", sans-serif;
+            background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #000000);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            color: #e0e0e0; /* 改用淺灰色文字，減少純白色的刺眼感 */
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 2. 深色玻璃擬態容器 */
+        .glass-container {
+            background: rgba(20, 20, 30, 0.7); /* 降低亮度，提高不透明度 */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1, h2 {
+            color: #ffffff;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+        }
+
+        /* 3. 深色卡片分段 */
+        .section-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(0, 242, 255, 0.3);
+        }
+
+        /* 4. 圖片處理 - 加入微妙的暗度過濾 */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 15px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+            filter: brightness(0.9); /* 讓圖片不要過亮 */
+            transition: filter 0.3s ease;
+        }
+
+        img:hover {
+            filter: brightness(1); /* 鼠標移上去才恢復亮度 */
+        }
+
+        /* 5. 連結樣式 - 在暗色背景下使用柔和的青藍色 */
+        a {
+            color: #4db8ff !important;
+            text-decoration: none;
+            word-break: break-all;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        a:hover {
+            color: #ffffff !important;
+            text-shadow: 0 0 12px #4db8ff;
+        }
+
+        .tool-link {
+            background: rgba(0, 242, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin: 8px;
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            color: #4db8ff !important;
+        }
+
+        .tool-link:hover {
+            background: #4db8ff;
+            color: #1a2a6c !important;
+            text-shadow: none;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 30px 0;
+        }
+
+        .tip-box {
+            background: rgba(255, 165, 0, 0.1);
+            padding: 15px;
+            border-left: 5px solid #d48806;
+            text-align: left;
+            margin: 20px 0;
+            font-size: 0.95em;
+            color: #ffc069;
+        }
+
+        .color-block-container {
+            margin-top: 40px;
+            line-height: 2.5;
+            opacity: 0.8;
+        }
+
+        /* 底部資訊樣式 */
+        .footer-ref {
+            margin-top: 50px; 
+            opacity: 0.4; 
+            font-size: 0.8em;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+<div class="glass-container">
+    <h1>🚀 Danny Yu AI 8256</h1>
+
+    <div class="section-card">
+        <h2>📚 數學題故事</h2>
+        <a href="https://app.animaker.com/video/WYYXA7FHIQ9IBHC1">🔗 Animaker Video</a><br>
+        <a href="https://youtu.be/oDXdF2XogsM">📺 YouTube Video</a><br>
+        <img src="pig1.png" alt="pig1">
+    </div>
+
+    <hr>
+
+    <div class="section-card">
+        <h2>🗼 巴黎鐵塔完成篇</h2>
+        <a href="https://app.animaker.com/video/LTEB7RCQP8GVP3RR">🔗 Animaker Video</a><br>
+        <a href="https://youtu.be/vSrIS5PZaJU">📺 YouTube Video</a><br>
+        <img src="paris1.png" alt="paris1"><br>
+        <img src="paris2.png" alt="paris2"><br>
+        <img src="paris3.png" alt="paris3">
+    </div>
+
+    <div class="section-card">
+        <h2>🎬 不同場景</h2>
+        <a href="https://app.animaker.com/animo/htWVyQadSCLCvW1T/">🔗 Animaker Animo</a>
+    </div>
+
+    <hr>
+
+    <div class="section-card">
+        <h2>🛠️ AI 工具箱</h2>
+        <a href="https://duck.ai/" class="tool-link">duck.ai</a>
+        <a href="https://ttsfree.com/" class="tool-link">TTS FREE 語音</a>
+        <a href="https://pollo.ai/invitation-landing?invite_code=WVZOAy" class="tool-link">POLLO</a>
+        <a href="https://dreamina.capcut.com/ai-tool/home" class="tool-link">即夢(國際版)</a>
+        <a href="https://magiclight.ai/" class="tool-link">magiclight</a>
+        <a href="https://dubbingai.io/zh/" class="tool-link">大餅變聲</a>
+        
+        <div class="tip-box">
+            💡 <strong>大餅變聲錄製提示：</strong><br>
+            如果在開始錄製時沒聲音，請前往 <strong>開始 > 設定 > 系統 > 音效 > 輸入</strong>，選擇 <strong>Dubbing Microphone</strong> 即可。
+        </div>
+        <img src="win1.png" alt="win1">
+        <img src="win2.png" alt="win2">
+    </div>
+
+    <div class="color-block-container">
+        <font color="#ff0000">[]</font> <font color="#ff3300">[]</font> <font color="#ff6600">[]</font> 
+        <font color="#ff9900">[]</font> <font color="#ffcc00">[]</font> <font color="#ffff00">[]</font> 
+        <font color="#ccff00">[]</font> <font color="#99ff00">[]</font> <font color="#66ff00">[]</font> 
+        <font color="#33ff00">[]</font> <font color="#00ff00">[]</font> <font color="#00ff33">[]</font> 
+        <font color="#00ff66">[]</font> <font color="#00ff99">[]</font> <font color="#00ffcc">[]</font> 
+        <font color="#00ffff">[]</font> <font color="#00ccff">[]</font> <font color="#0099ff">[]</font> 
+        <font color="#0066ff">[]</font> <font color="#0033ff">[]</font> <font color="#0000ff">[]</font> 
+        <font color="#3300ff">[]</font> <font color="#6600ff">[]</font> <font color="#9900ff">[]</font> 
+        <font color="#cc00ff">[]</font> <font color="#ff00ff">[]</font>
+    </div>
+
+    <div class="footer-ref">
+        © 2026 Danny Yu AI | Dark Edition | Ref: 8256
+    </div>
+</div>
+
+</body>
+</html>
