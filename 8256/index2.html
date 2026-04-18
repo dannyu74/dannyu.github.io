@@ -6,12 +6,12 @@
     <title>Danny Yu AI 8256</title>
     <base target="_blank">
     <style>
-        /* 1. 動態背景 - 加速流動 (從 15s 改為 6s) */
+        /* 背景流動速度 6s，深色系 */
         body {
             margin: 0;
             padding: 20px;
             font-family: "PingFang HK", "Microsoft JhengHei", sans-serif;
-            background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #000000);
+            background: linear-gradient(-45deg, #050505, #1a1a2e, #16213e, #0f3460);
             background-size: 400% 400%;
             animation: gradientBG 6s ease infinite; 
             display: flex;
@@ -26,118 +26,95 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* 2. 玻璃擬態容器 - 闊度增加到 1200px */
+        /* 闊度設定為 98% */
         .glass-container {
-            background: rgba(20, 20, 30, 0.75);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(15, 15, 25, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
+            border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-            max-width: 1200px; /* 寬度增加 */
-            width: 95%; /* 減少左右空位 */
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            max-width: 1300px;
+            width: 98%; 
             text-align: center;
+            margin: 20px auto;
         }
 
-        h1, h2 {
-            color: #ffffff;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            letter-spacing: 2px;
-        }
-
-        /* 3. 段落卡片 */
         .section-card {
             background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
+            border-radius: 15px;
             padding: 30px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
         }
 
-        .section-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.07);
-            border-color: rgba(0, 242, 255, 0.3);
-        }
-
-        /* 4. 圖片處理 */
         img {
             max-width: 100%;
             height: auto;
-            border-radius: 12px;
+            border-radius: 10px;
             margin: 15px 0;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.1);
-            filter: brightness(0.9);
-            transition: filter 0.3s ease;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
         }
 
-        img:hover {
-            filter: brightness(1);
-        }
-
-        /* 5. 連結與工具按鈕 */
+        /* 嚴格還原原本的連結樣式 */
         a {
-            color: #4db8ff !important;
+            color: #00d9ff !important;
             text-decoration: none;
-            word-break: break-all;
             font-weight: bold;
             transition: 0.3s;
             display: inline-block;
             margin: 5px 0;
+            word-break: break-all;
         }
 
         a:hover {
             color: #ffffff !important;
-            text-shadow: 0 0 12px #4db8ff;
+            text-shadow: 0 0 10px #00d9ff;
         }
 
+        /* 工具按鈕樣式 */
         .tool-link {
-            background: rgba(0, 242, 255, 0.1);
-            padding: 12px 25px;
+            background: rgba(0, 217, 255, 0.1);
+            padding: 10px 20px;
             border-radius: 50px;
-            margin: 10px;
-            border: 1px solid rgba(0, 242, 255, 0.2);
-            color: #4db8ff !important;
-            display: inline-block;
+            margin: 8px;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            color: #00d9ff !important;
         }
 
         .tool-link:hover {
-            background: #4db8ff;
-            color: #1a2a6c !important;
-            text-shadow: none;
-            box-shadow: 0 0 15px rgba(77, 184, 255, 0.5);
+            background: #00d9ff;
+            color: #000 !important;
         }
 
-        hr {
-            border: none;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-            margin: 40px 0;
+        h1, h2, b {
+            color: white;
+            display: block;
+            margin-bottom: 15px;
         }
 
         .tip-box {
             background: rgba(255, 165, 0, 0.1);
             padding: 20px;
-            border-left: 5px solid #d48806;
+            border-left: 5px solid #cc8400;
             text-align: left;
-            margin: 25px 0;
-            border-radius: 0 10px 10px 0;
-            color: #ffc069;
+            margin: 20px auto;
+            color: #ffb366;
+            line-height: 1.6;
         }
 
         .color-block-container {
             margin-top: 40px;
-            line-height: 2.5;
-            opacity: 0.7;
+            letter-spacing: 8px;
+            font-size: 1.2em;
         }
 
-        .footer-ref {
-            margin-top: 60px; 
-            opacity: 0.4; 
-            font-size: 0.85em;
+        hr {
+            border: none;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+            margin: 40px 0;
         }
     </style>
 </head>
@@ -147,33 +124,37 @@
     <h1>🚀 Danny Yu AI 8256</h1>
 
     <div class="section-card">
-        <h2>📚 數學題故事</h2>
-        <a href="https://app.animaker.com/video/WYYXA7FHIQ9IBHC1">🔗 Animaker Video (WYYXA)</a> &nbsp; | &nbsp;
-        <a href="https://youtu.be/oDXdF2XogsM">📺 YouTube Video (oDXd)</a><br>
-        <img src="pig1.png" alt="pig1">
+        <b>數學題故事</b>
+        <a href="https://app.animaker.com/video/WYYXA7FHIQ9IBHC1">https://app.animaker.com/video/WYYXA7FHIQ9IBHC1</a><br>
+        <a href="https://youtu.be/oDXdF2XogsM">https://youtu.be/oDXdF2XogsM</a><br>
+        <img src="pig1.png">
     </div>
 
     <hr>
 
     <div class="section-card">
-        <h2>🗼 巴黎鐵塔完成篇</h2>
-        <a href="https://app.animaker.com/video/LTEB7RCQP8GVP3RR">🔗 Animaker Video (LTEB)</a> &nbsp; | &nbsp;
-        <a href="https://youtu.be/vSrIS5PZaJU">📺 YouTube Video (vSrI)</a><br>
-        <img src="paris1.png" alt="paris1"><br>
-        <img src="paris2.png" alt="paris2"><br>
-        <img src="paris3.png" alt="paris3">
-    </div>
-
-    <div class="section-card">
-        <h2>🎬 不同場景</h2>
-        <a href="https://app.animaker.com/animo/htWVyQadSCLCvW1T/">🔗 Animaker Animo (htWV)</a>
+        <b>巴黎鐵塔完成篇</b>
+        <a href="https://app.animaker.com/video/LTEB7RCQP8GVP3RR">https://app.animaker.com/video/LTEB7RCQP8GVP3RR</a><br>
+        <a href="https://youtu.be/vSrIS5PZaJU">https://youtu.be/vSrIS5PZaJU</a><br>
+        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px;">
+            <img src="paris1.png" style="max-width: 32%;">
+            <img src="paris2.png" style="max-width: 32%;">
+            <img src="paris3.png" style="max-width: 32%;">
+        </div>
     </div>
 
     <hr>
 
     <div class="section-card">
-        <h2>🛠️ AI 工具箱</h2>
-        <div style="margin-bottom: 20px;">
+        <b>不同場景</b>
+        <a href="https://app.animaker.com/animo/htWVyQadSCLCvW1T/">https://app.animaker.com/animo/htWVyQadSCLCvW1T/</a>
+    </div>
+
+    <hr>
+
+    <div class="section-card">
+        <b>AI 工具箱</b>
+        <div style="margin-bottom: 25px;">
             <a href="https://duck.ai/" class="tool-link">duck.ai</a>
             <a href="https://ttsfree.com/" class="tool-link">TTS FREE 語音</a>
             <a href="https://pollo.ai/invitation-landing?invite_code=WVZOAy" class="tool-link">POLLO</a>
@@ -183,13 +164,12 @@
         </div>
         
         <div class="tip-box">
-            💡 <strong>大餅變聲錄製提示：</strong><br>
-            如果在開始錄製時沒聲音，請前往 <strong>開始 > 設定 > 系統 > 音效 > 輸入</strong>，選擇 <strong>Dubbing Microphone</strong> 即可。
+            錄製唔到大餅變聲.可以在 開始 > 設定 > 系統 > 音效 > 輸入裡選 Dubbing Microphone 便可以。
         </div>
         
-        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-            <img src="win1.png" alt="win1" style="max-width: 48%;">
-            <img src="win2.png" alt="win2" style="max-width: 48%;">
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <img src="win1.png" style="max-width: 48%;">
+            <img src="win2.png" style="max-width: 48%;">
         </div>
     </div>
 
@@ -197,4 +177,14 @@
         <font color="#ff0000">[]</font> <font color="#ff3300">[]</font> <font color="#ff6600">[]</font> 
         <font color="#ff9900">[]</font> <font color="#ffcc00">[]</font> <font color="#ffff00">[]</font> 
         <font color="#ccff00">[]</font> <font color="#99ff00">[]</font> <font color="#66ff00">[]</font> 
-        <font color="#33ff00">[]</font>
+        <font color="#33ff00">[]</font> <font color="#00ff00">[]</font> <font color="#00ff33">[]</font> 
+        <font color="#00ff66">[]</font> <font color="#00ff99">[]</font> <font color="#00ffcc">[]</font> 
+        <font color="#00ffff">[]</font> <font color="#00ccff">[]</font> <font color="#0099ff">[]</font> 
+        <font color="#0066ff">[]</font> <font color="#0033ff">[]</font> <font color="#0000ff">[]</font> 
+        <font color="#3300ff">[]</font> <font color="#6600ff">[]</font> <font color="#9900ff">[]</font> 
+        <font color="#cc00ff">[]</font> <font color="#ff00ff">[]</font>
+    </div>
+</div>
+
+</body>
+</html>
