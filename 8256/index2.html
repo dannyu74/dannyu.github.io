@@ -6,18 +6,20 @@
     <title>Danny Yu AI 8256</title>
     <base target="_blank">
     <style>
-        /* 背景流動速度 6s，深色系 */
+        /* 1. 加強對比的背景漸變 - 4秒循環，動感更強 */
         body {
             margin: 0;
             padding: 20px;
             font-family: "PingFang HK", "Microsoft JhengHei", sans-serif;
-            background: linear-gradient(-45deg, #050505, #1a1a2e, #16213e, #0f3460);
+            /* 顏色改為：極深藍 -> 深紫 -> 海軍藍 -> 黑色 */
+            background: linear-gradient(-45deg, #050505, #1a1a2e, #4a00e0, #8e2de2, #0f3460);
             background-size: 400% 400%;
-            animation: gradientBG 6s ease infinite; 
+            animation: gradientBG 4s ease infinite; 
             display: flex;
             justify-content: center;
             min-height: 100vh;
             color: #e0e0e0;
+            overflow-x: hidden;
         }
 
         @keyframes gradientBG {
@@ -26,102 +28,106 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* 闊度設定為 98% */
+        /* 2. 玻璃擬態容器 - 闊度 98% */
         .glass-container {
-            background: rgba(15, 15, 25, 0.85);
+            background: rgba(10, 10, 20, 0.85); /* 稍微調深一點點 */
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-            max-width: 1300px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 25px;
+            padding: 45px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.9);
+            max-width: 1350px; /* 寬度 */
             width: 98%; 
             text-align: center;
             margin: 20px auto;
         }
 
+        /* 3. 分段卡片 */
         .section-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 18px;
+            padding: 35px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin: 15px 0;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
-        }
-
-        /* 嚴格還原原本的連結樣式 */
+        /* 4. 嚴格還原原本的文字連結 */
         a {
-            color: #00d9ff !important;
+            color: #00e5ff !important; /* 鮮亮的青色 */
             text-decoration: none;
             font-weight: bold;
             transition: 0.3s;
             display: inline-block;
-            margin: 5px 0;
+            margin: 8px 0;
             word-break: break-all;
+            font-size: 1.1em;
         }
 
         a:hover {
             color: #ffffff !important;
-            text-shadow: 0 0 10px #00d9ff;
+            text-shadow: 0 0 15px #00e5ff;
         }
 
-        /* 工具按鈕樣式 */
+        /* 工具按鈕 */
         .tool-link {
-            background: rgba(0, 217, 255, 0.1);
-            padding: 10px 20px;
+            background: rgba(0, 229, 255, 0.15);
+            padding: 12px 24px;
             border-radius: 50px;
-            margin: 8px;
-            border: 1px solid rgba(0, 217, 255, 0.3);
-            color: #00d9ff !important;
+            margin: 10px;
+            border: 1px solid rgba(0, 229, 255, 0.4);
+            color: #00e5ff !important;
         }
 
         .tool-link:hover {
-            background: #00d9ff;
+            background: #00e5ff;
             color: #000 !important;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
         }
 
-        h1, h2, b {
-            color: white;
-            display: block;
-            margin-bottom: 15px;
+        /* 圖片設定 */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
         }
 
+        /* 原本標題與彩色方塊 */
+        b { color: #ffffff; font-size: 1.4em; display: block; margin-bottom: 15px; }
+        
         .tip-box {
-            background: rgba(255, 165, 0, 0.1);
+            background: rgba(255, 165, 0, 0.15);
             padding: 20px;
-            border-left: 5px solid #cc8400;
+            border-left: 6px solid #ff9900;
             text-align: left;
-            margin: 20px auto;
-            color: #ffb366;
-            line-height: 1.6;
+            margin: 30px auto;
+            color: #ffcc66;
+            line-height: 1.8;
+            border-radius: 4px;
         }
 
         .color-block-container {
-            margin-top: 40px;
-            letter-spacing: 8px;
-            font-size: 1.2em;
+            margin-top: 50px;
+            letter-spacing: 12px;
+            font-size: 1.3em;
+            opacity: 0.8;
         }
 
         hr {
             border: none;
             height: 1px;
-            background: rgba(255,255,255,0.1);
-            margin: 40px 0;
+            background: rgba(255,255,255,0.15);
+            margin: 50px 0;
         }
     </style>
 </head>
 <body>
 
 <div class="glass-container">
-    <h1>🚀 Danny Yu AI 8256</h1>
+    <h1 style="font-size: 2.8em; color: white; margin-bottom: 40px; text-shadow: 0 5px 15px rgba(0,0,0,0.5);">🚀 Danny Yu AI 8256</h1>
 
     <div class="section-card">
         <b>數學題故事</b>
@@ -136,7 +142,7 @@
         <b>巴黎鐵塔完成篇</b>
         <a href="https://app.animaker.com/video/LTEB7RCQP8GVP3RR">https://app.animaker.com/video/LTEB7RCQP8GVP3RR</a><br>
         <a href="https://youtu.be/vSrIS5PZaJU">https://youtu.be/vSrIS5PZaJU</a><br>
-        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px;">
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
             <img src="paris1.png" style="max-width: 32%;">
             <img src="paris2.png" style="max-width: 32%;">
             <img src="paris3.png" style="max-width: 32%;">
@@ -154,7 +160,7 @@
 
     <div class="section-card">
         <b>AI 工具箱</b>
-        <div style="margin-bottom: 25px;">
+        <div style="margin-bottom: 30px;">
             <a href="https://duck.ai/" class="tool-link">duck.ai</a>
             <a href="https://ttsfree.com/" class="tool-link">TTS FREE 語音</a>
             <a href="https://pollo.ai/invitation-landing?invite_code=WVZOAy" class="tool-link">POLLO</a>
@@ -167,7 +173,7 @@
             錄製唔到大餅變聲.可以在 開始 > 設定 > 系統 > 音效 > 輸入裡選 Dubbing Microphone 便可以。
         </div>
         
-        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
             <img src="win1.png" style="max-width: 48%;">
             <img src="win2.png" style="max-width: 48%;">
         </div>
