@@ -1,18 +1,287 @@
-﻿<html>
-
+<!DOCTYPE html>
+<html lang="zh-Hant">
 <head>
-<title>ＡＩ ８２７０　</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌌 8270 AI 真實粒子流體 - 全域點擊版</title>
+    <style>
+        /* 1. 基礎深色宇宙背景 */
+        body {
+            margin: 0;
+            padding: 80px 20px;
+            font-family: "Segoe UI", "PingFang HK", sans-serif;
+            background-color: #050505;
+            background-image: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&q=80&w=2048');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-<base target=_blank>
-    <meta charset="big5">
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 0;
+        }
 
+        /* 2. 粒子流體畫布 */
+        #fluid-canvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* 3. 內容導航設計 */
+        .flow-container {
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            letter-spacing: 10px;
+            text-align: left;
+            margin-bottom: 60px;
+            font-weight: 200;
+            color: #fff;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 20px;
+            text-shadow: 0 0 15px rgba(255,255,255,0.5);
+        }
+
+        /* --- 核心修改：整個框框的可點擊設計 --- */
+        .flow-link {
+            text-decoration: none; /* 移除超連結底線 */
+            display: block; /* 讓 <a> 撐開變成塊狀 */
+            color: inherit;
+            margin-bottom: 45px;
+        }
+
+        .flow-item {
+            position: relative;
+            padding: 20px 20px 20px 40px; /* 增加上下內距，擴大點擊範圍 */
+            border-left: 2px solid rgba(255, 255, 255, 0.1);
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0); /* 平時透明 */
+            border-radius: 0 15px 15px 0;
+        }
+
+        .flow-item::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 28px; /* 對準標題位置 */
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        /* 滑鼠移入整個框框的效果 */
+        .flow-link:hover .flow-item {
+            border-left: 2px solid #00d4ff;
+            background: rgba(0, 212, 255, 0.08); /* 整個框框變亮 */
+            padding-left: 55px; /* 稍微右移增加動感 */
+            box-shadow: inset 10px 0 20px rgba(0, 212, 255, 0.1);
+        }
+
+        .flow-link:hover .flow-item::before {
+            background: #00d4ff;
+            box-shadow: 0 0 20px #00d4ff;
+            transform: scale(1.5);
+        }
+
+        .brand-name {
+            font-size: 1.4em;
+            display: block;
+            margin-bottom: 8px;
+            letter-spacing: 3px;
+            font-weight: 500;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+        .url-text {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.95em;
+            word-break: break-all;
+            transition: 0.3s;
+        }
+
+        .flow-link:hover .brand-name {
+            color: #00d4ff;
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
+        }
+
+        .flow-link:hover .url-text {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* 分類與裝飾 */
+        .section-tag {
+            font-size: 0.95em;
+            color: rgba(0, 212, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin: 80px 0 40px -40px;
+            display: block;
+            text-align: center;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .divider-dots {
+            letter-spacing: 15px;
+            color: rgba(255,255,255,0.1);
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        footer {
+            margin-top: 100px;
+            text-align: left;
+            font-size: 0.75em;
+            letter-spacing: 5px;
+            color: rgba(255,255,255,0.2);
+        }
+    </style>
 </head>
+<body>
 
-<body text="lightgreen" background=wa2025a.png alink=white link=purple vlink=green>
-<center>
-<h1>人工智能 AI 生成圖片變動畫
-<br>
+<canvas id="fluid-canvas"></canvas>
 
+<div class="flow-container">
+    <h1>人工智能 AI 生成圖片變動畫</h1>
+
+   <font color="#ff0000">[]</font> <font color="#ff3300">[]</font> <font color="#ff6600">[]</font> 
+<font color="#ff9900">[]</font> <font color="#ffcc00">[]</font> <font color="#ffff00">[]</font> 
+<font color="#ccff00">[]</font> <font color="#99ff00">[]</font> <font color="#66ff00">[]</font> 
+<font color="#33ff00">[]</font> <font color="#00ff00">[]</font> <font color="#00ff33">[]</font> 
+<font color="#00ff66">[]</font> <font color="#00ff99">[]</font> <font color="#00ffcc">[]</font> 
+<font color="#00ffff">[]</font> <font color="#00ccff">[]</font> <font color="#0099ff">[]</font> 
+<font color="#0066ff">[]</font> <font color="#0033ff">[]</font> <font color="#0000ff">[]</font> 
+<font color="#3300ff">[]</font> <font color="#6600ff">[]</font> <font color="#9900ff">[]</font> 
+<font color="#cc00ff">[]</font> <font color="#ff00ff">[]</font><br>
+
+    <a href="https://pollo.ai/invitation-landing?invite_code=WVZOAy" class="flow-link" target="_blank">
+        <div class="flow-item">
+            <span class="brand-name">ＰＯＬＬＯ</span>
+            <span class="url-text">pollo.ai</span>
+        </div>
+    </a>
+
+    <a href="https://www.vidu.com/templates?utm_source=referral&utm_medium=invitefriends&utm_campaign=long_term&utm_term=mnPvhGN3WhqQJyki&utm_content=/templates" class="flow-link" target="_blank">
+        <div class="flow-item">
+            <span class="brand-name">ＶＩＤＵ</span>
+            <span class="url-text">www.vidu.com</span>
+        </div>
+    </a>
+
+    <a href="https://jimeng.jianying.com/s/BqB2fGFK1AM/?t=-4" class="flow-link" target="_blank">
+        <div class="flow-item">
+            <span class="brand-name">即夢</span>
+            <span class="url-text">jimeng.jianying.com</span>
+        </div>
+    </a>
+
+    <a href="https://dreamina.capcut.com/" class="flow-link" target="_blank">
+        <div class="flow-item">
+            <span class="brand-name">即夢{國際版}</span>
+            <span class="url-text">https://dreamina.capcut.com/</span>
+        </div>
+    </a>
+
+    <a href="https://www.hedra.com" class="flow-link" target="_blank">
+        <div class="flow-item">
+            <span class="brand-name">Ｈｅｄｒａ</span>
+            <span class="url-text">www.hedra.com</span>
+        </div>
+    </a>
+
+    <a href="https://app.klingai.com" class="flow-link" target="_blank">
+        <div class="flow-item">
+            <span class="brand-name">可靈</span>
+            <span class="url-text">app.klingai.com</span>
+        </div>
+    </a>
+
+    <a href="https://www.doubao.com" class="flow-link" target="_blank">
+        <div class="flow-item">
+            <span class="brand-name">豆包</span>
+            <span class="url-text">www.doubao.com</span>
+        </div>
+    </a>
+
+    <a href="https://app.pixverse.ai/home" class="flow-link" target="_blank">
+        <div class="flow-item">
+            <span class="brand-name">ＰＩＸＶＥＲＳＥ</span>
+            <span class="url-text">app.pixverse.ai/home</span>
+        </div>
+    </a>
+
+    <a href="https://chatgpt.com/" class="flow-link" target="_blank">
+        <div class="flow-item">
+            <span class="brand-name">Ｃｈａｔｇｐｔ</span>
+            <span class="url-text">chatgpt.com/</span>
+        </div>
+    </a>
+
+    <span class="section-tag">＜＞＜＞＜＞＜＞ ＳＯＵＮＤＳ ＜＞＜＞＜＞＜＞</span>
+
+    <a href="https://mixkit.co/free-sound-effects" class="flow-link" target="_blank">
+        <div class="flow-item">
+            <span class="brand-name">ＭＩＸＫＩＴ</span>
+            <span class="url-text">mixkit.co/free-sound-effects</span>
+        </div>
+    </a>
+
+    <a href="https://www.soundgator.com" class="flow-link" target="_blank">
+        <div class="flow-item">
+            <span class="brand-name">ＳＯＵＮＤＧＡＴＯＲ</span>
+            <span class="url-text">www.soundgator.com</span>
+        </div>
+    </a>
+
+    <a href="https://soundeffectgenerator.org" class="flow-link" target="_blank">
+        <div class="flow-item">
+            <span class="brand-name">Sound Effect Generator</span>
+            <span class="url-text">soundeffectgenerator.org</span>
+        </div>
+    </a>
+
+    <a href="https://ttsmaker.com" class="flow-link" target="_blank">
+        <div class="flow-item">
+            <span class="brand-name">ｔｔｓｍａｋｅｒ</span>
+            <span class="url-text">ttsmaker.com</span>
+        </div>
+    </a>
+
+    <span class="section-tag">＜＞＜＞＜＞＜＞ ｅｄｉｔｉｎｇ ＜＞＜＞＜＞＜＞</span>
+
+    <a href="https://clipchamp.com" class="flow-link" target="_blank">
+        <div class="flow-item">
+            <span class="brand-name">Ｃｌｉｐｃｈａｍｐ</span>
+            <span class="url-text">clipchamp.com</span>
+        </div>
+    </a>
+
+    <a href="https://wide.video" class="flow-link" target="_blank">
+        <div class="flow-item">
+            <span class="brand-name">ｗｉｄｅ．ｖｉｄｅｏ</span>
+            <span class="url-text">wide.video</span>
+        </div>
+    </a>
 
 <font color="#ff0000">[]</font> <font color="#ff3300">[]</font> <font color="#ff6600">[]</font> 
 <font color="#ff9900">[]</font> <font color="#ffcc00">[]</font> <font color="#ffff00">[]</font> 
@@ -23,103 +292,67 @@
 <font color="#0066ff">[]</font> <font color="#0033ff">[]</font> <font color="#0000ff">[]</font> 
 <font color="#3300ff">[]</font> <font color="#6600ff">[]</font> <font color="#9900ff">[]</font> 
 <font color="#cc00ff">[]</font> <font color="#ff00ff">[]</font><br>
-</h1>
-<font size=6>
-
-  
-
-ＰＯＬＬＯ
-<br><a href=https://pollo.ai/invitation-landing?invite_code=WVZOAy>pollo.ai</a>
-<p>
-
-
-ＶＩＤＵ
-<br><a href=https://www.vidu.com/templates?utm_source=referral&utm_medium=invitefriends&utm_campaign=long_term&utm_term=mnPvhGN3WhqQJyki&utm_content=/templates>www.vidu.com
-</a>
-<p>
-
-
-即夢
-<br><a href=https://jimeng.jianying.com/s/BqB2fGFK1AM/?t=-4>jimeng.jianying.com
-</a>
-<p>
-
-    
-即夢{國際版}
-<br><a href=https://dreamina.capcut.com/>https://dreamina.capcut.com/
-</a>
-<p>
-
-
-
-
-Ｈｅｄｒａ
-<br><a href=https://www.hedra.com/>www.hedra.com
-</a>
-<p>
-
-可靈
-<br><a href=https://app.klingai.com/cn/>app.klingai.com
-</a>
-<p>
-
-豆包
-<br><a href=https://www.doubao.com>www.doubao.com</a>
-<p>
-
-
-ＰＩＸＶＥＲＳＥ
-<br><a href=https://app.pixverse.ai/home>app.pixverse.ai/home</a>
-<p>
-
-Ｃｈａｔｇｐｔ
-<br><a href=https://chatgpt.com/>chatgpt.com/</a>
-<p>
-
-    ＜＞＜＞＜＞＜＞<font color=yellow>ＳＯＵＮＤＳ</font>＜＞＜＞＜＞＜＞
-    <p></p>
-ＭＩＸＫＩＴ
-<br><a href=https://mixkit.co/free-sound-effects/>mixkit.co/free-sound-effects</a>
-<p>
-
-ＳＯＵＮＤＧＡＴＯＲ
-<br><a href=https://www.soundgator.com/>www.soundgator.com</a>
-<p>
-
-Sound Effect Generator
-<br><a href=https://soundeffectgenerator.org/>soundeffectgenerator.org</a>
-<p>
-
-ｔｔｓｍａｋｅｒ
-<BR><a href=https://ttsmaker.com/>ttsmaker.com</a>
-<p></p>
-    
-   ＜＞＜＞＜＞＜＞<font color=yellow>ｅｄｉｔｉｎｇ</font>＜＞＜＞＜＞＜＞
-<p></p>
-Ｃｌｉｐｃｈａｍｐ
-<br><a href=https://clipchamp.com/>clipchamp.com</a>
-<p>
-
-ｗｉｄｅ．ｖｉｄｅｏ
-<br><a href=https://wide.video/>wide.video</a>
-<p>
-    
-
-<font color="#ff0000">[]</font> <font color="#ff3300">[]</font> <font color="#ff6600">[]</font> 
-<font color="#ff9900">[]</font> <font color="#ffcc00">[]</font> <font color="#ffff00">[]</font> 
-<font color="#ccff00">[]</font> <font color="#99ff00">[]</font> <font color="#66ff00">[]</font> 
-<font color="#33ff00">[]</font> <font color="#00ff00">[]</font> <font color="#00ff33">[]</font> 
-<font color="#00ff66">[]</font> <font color="#00ff99">[]</font> <font color="#00ffcc">[]</font> 
-<font color="#00ffff">[]</font> <font color="#00ccff">[]</font> <font color="#0099ff">[]</font> 
-<font color="#0066ff">[]</font> <font color="#0033ff">[]</font> <font color="#0000ff">[]</font> 
-<font color="#3300ff">[]</font> <font color="#6600ff">[]</font> <font color="#9900ff">[]</font> 
-<font color="#cc00ff">[]</font> <font color="#ff00ff">[]</font><br>
-
 
 <p><img src=8270.jpeg width=1280>
 <p><img src=8270a.png width=1280>
-<p><iframe width="1280" height="960" src="https://www.youtube.com/embed/VvzA_wNURU8?si=MhZA3PSvdhtEPY0R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<br><a href=https://youtu.be/VvzA_wNURU8?si=AXnknUTjl9pXqQ1t>https://youtu.be/VvzA_wNURU8?si=AXnknUTjl9pXqQ1t</a>
+<p><iframe width="1280" height="960" src="https://www.youtube.com/embed/VvzA_wNURU8?si=jRX0DKndm6JdpfjJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+    <footer>
+        8270 COURSE NAVIGATOR | DEEP SPACE PARTICLE STUDIO
+    </footer>
+</div>
+
+<script>
+    const canvas = document.getElementById('fluid-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 0.5;
+            this.speedX = (Math.random() - 0.5) * 0.4;
+            this.speedY = (Math.random() - 0.5) * 0.4;
+            const colors = ['rgba(255,255,255,0.4)', 'rgba(0,212,255,0.3)', 'rgba(188,19,254,0.3)'];
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x > canvas.width) this.x = 0;
+            if (this.x < 0) this.x = canvas.width;
+            if (this.y > canvas.height) this.y = 0;
+            if (this.y < 0) this.y = canvas.height;
+        }
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+    function initParticles() {
+        particles = [];
+        const numberOfParticles = (canvas.width * canvas.height) / 12000;
+        for (let i = 0; i < numberOfParticles; i++) {
+            particles.push(new Particle());
+        }
+    }
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animate);
+    }
+    initParticles();
+    animate();
+</script>
 
 
 
@@ -127,9 +360,3 @@ Sound Effect Generator
 
 </body>
 </html>
-
-
-
-
-
-
