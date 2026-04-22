@@ -1,90 +1,246 @@
-﻿<html>
-
+<!DOCTYPE html>
+<html lang="zh-Hant">
 <head>
-<title>ＡＩ數字人</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ＤＡＮＮＹＵ．ＣＯＭ　🕊️ 阿凡達 數字人</title>
+    <base target="_blank">
+    <style>
+        /* 1. 晨霧流動背景 */
+        body {
+            margin: 0;
+            padding: 60px 20px;
+            font-family: "PingFang HK", "Microsoft JhengHei", sans-serif;
+            color: #4a4a4a;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            
+            /* 四色柔和漸變 */
+            background: linear-gradient(135deg, #f4f1ea, #e8edf3, #f1e9f5, #e9f5f2);
+            background-size: 400% 400%; /* 放大背景才有流動空間 */
+            animation: mistFlow 10s ease infinite; /* 20秒一週，確保極其平滑不眼花 */
+            background-attachment: fixed;
+        }
 
-<base target=_blank>
-    <meta charset="big5">
+        /* 背景流動動畫 */
+        @keyframes mistFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
+        .container {
+            max-width: 750px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: 300;
+            font-size: 2.5em;
+            letter-spacing: 10px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            text-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .tagline {
+            text-align: center;
+            font-size: 0.9em;
+            letter-spacing: 4px;
+            color: #a8a397;
+            margin-bottom: 60px;
+        }
+
+        /* 2. 磨砂玻璃卡片 - 讓背景流動隱約透出來 */
+        .zen-card {
+            background: rgba(255, 255, 255, 0.6); /* 半透明 */
+            backdrop-filter: blur(15px); /* 磨砂效果 */
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 28px;
+            padding: 35px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .zen-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+        }
+
+        .item-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .emoji-box {
+            font-size: 2em;
+            margin-right: 20px;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+        }
+
+        .item-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* 連結樣式 */
+        a {
+            color: #5d6d7e;
+            text-decoration: none;
+            font-size: 1.05em;
+            word-break: break-all;
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: #000;
+            border-bottom: 1px solid #000;
+        }
+
+        .desc-text {
+            margin-top: 20px;
+            font-size: 0.95em;
+            color: #7f8c8d;
+            line-height: 1.7;
+            background: rgba(0,0,0,0.02);
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .alert-text {
+            color: #a94442;
+            background: rgba(242,dede,0.3);
+            padding: 12px 18px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-size: 0.9em;
+            border: 1px solid rgba(169, 68, 66, 0.1);
+        }
+
+        .zen-divider {
+            text-align: center;
+            margin: 50px 0;
+            color: rgba(0,0,0,0.1);
+            letter-spacing: 20px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 100px;
+            color: #bdc3c7;
+            font-size: 0.8em;
+            letter-spacing: 5px;
+        }
+    </style>
 </head>
+<body>
 
-<body text="brown" background=wall202509a.png alink=yellow link=darkpink vlink=darkgreen>
-<center>
-<h1>阿凡達
-<br>
+<div class="container">
+    <h1>阿凡達</h1>
+    <div class="tagline">DIGITAL HUMAN AVATAR</div>
 
+    <div class="zen-card">
+        <div class="item-header">
+            <span class="emoji-box">📸</span>
+            <span class="item-title">將數字人的圖片改成不同角度</span>
+        </div>
+        <a href="https://huggingface.co/spaces/tori29umai/Qwen-Image-2509-MultipleAngles">HuggingFace Spaces - Qwen Image</a>
+    </div>
 
-<font color="#ff0000">[]</font> <font color="#ff3300">[]</font> <font color="#ff6600">[]</font> 
-<font color="#ff9900">[]</font> <font color="#ffcc00">[]</font> <font color="#ffff00">[]</font> 
-<font color="#ccff00">[]</font> <font color="#99ff00">[]</font> <font color="#66ff00">[]</font> 
-<font color="#33ff00">[]</font> <font color="#00ff00">[]</font> <font color="#00ff33">[]</font> 
-<font color="#00ff66">[]</font> <font color="#00ff99">[]</font> <font color="#00ffcc">[]</font> 
-<font color="#00ffff">[]</font> <font color="#00ccff">[]</font> <font color="#0099ff">[]</font> 
-<font color="#0066ff">[]</font> <font color="#0033ff">[]</font> <font color="#0000ff">[]</font> 
-<font color="#3300ff">[]</font> <font color="#6600ff">[]</font> <font color="#9900ff">[]</font> 
-<font color="#cc00ff">[]</font> <font color="#ff00ff">[]</font><br>
-</h1>
-<font size=6>
+    <div class="zen-divider">○○○</div>
 
-將數字人的圖片改成不同角度
-    <br><a href=https://huggingface.co/spaces/tori29umai/Qwen-Image-2509-MultipleAngles>https://huggingface.co/spaces/tori29umai/Qwen-Image-2509-MultipleAngles</a>
-    <p>
+    <div class="zen-card">
+        <div class="item-header">
+            <span class="emoji-box">⚡</span>
+            <span class="item-title">閃剪 (ShanJian)</span> 🪬 <a href=https://youtube.com/shorts/Exg5_0o0cNw?feature=share>DEMO</a>
+        </div>
+        <a href="https://shanjian.tv">shanjian.tv</a> 
+    </div>
 
-閃剪
-<Br><a href=https://shanjian.tv>shanjian.tv</a>
-    <br><a href=https://youtube.com/shorts/Exg5_0o0cNw?feature=share>DEMO</a>
-    <p></p>
+    <div class="zen-card">
+        <div class="item-header">
+            <span class="emoji-box">🎬</span>
+            <span class="item-title">Keevx </span>🪬  <a href=https://youtu.be/fzcXTureRqo?si=OVFrRtzSJg3BMuak>DEMO</a>
+        </div>
+        <a href="https://www.keevx.com">https://www.keevx.com</a>
+        <div class="desc-text">✨ {有AI自動建立劇本分鏡,或者腳本}</div>
+    </div>
 
-keevx {有AI自動建立劇本分鏡,或者腳本}
-<br><a href=https://www.keevx.com/main/home?inviteCode=f8b2a005-421d-47da-b205-6ca634696985>https://www.keevx.com</a>
-<br><a href=https://youtu.be/fzcXTureRqo?si=OVFrRtzSJg3BMuak>DEMO</a>
-   <p></p>
+    <div class="zen-card">
+        <div class="item-header">
+            <span class="emoji-box">👁️</span>
+            <span class="item-title">嬋鏡 (Chanjing)</span>🪬 <a href=https://youtu.be/63QtseJU9e0>DEMO</a>
+        </div>
+        <a href="http://www.chanjing.cc">www.chanjing.cc</a>
+    </div>
 
-嬋鏡
-<br><a href=https://www.chanjing.cc/member.html/?invite_code=MEnzXM2>www.chanjing.cc</a>
-    <br><a href=https://youtu.be/63QtseJU9e0>DEMO</a>
-<p>
-
-
-即夢
-<br><a href=https://jimeng.jianying.com>jimeng.jianying.com</a>
-    <br><a href=https://youtu.be/rBIRuVDWBuI>DEMO</a>
-<br>
-即夢國際版
-    <br><a href=https://dreamina.capcut.com/zh-tw/>https://dreamina.capcut.com/zh-tw/</a>
-    
-    <p>
-
-飛影
-<br><a href=https://hifly.cc/i/VVyrdFkmoGu>hifly.cc</a>
-    <br><a href=https://youtube.com/shorts/785HWcXOlZE?feature=share>DEMO</a>
-<p>
-
-vidnoz
-<br><a href=https://vidnoz.com>vidnoz.com</a>
-    <br><a href=https://youtu.be/htXoOam5FC8>DEMO</a>
-<p>
-
-HeyGen
-    <br><a href=https://app.heygen.com/home>https://app.heygen.com</a>
-<p></p>
-
-Edimakor {Software, 免費戶口不能做數字人}
-<br><a href=https://edimakor.hitpaw.tw/features/ai-avatar.html>edimakor.hitpaw.tw/features/ai-avatar.html</a>
-<p>
+    <div class="zen-card">
+        <div class="item-header">
+            <span class="emoji-box">🌍</span>
+            <span class="item-title">即夢國際版</span>
+        </div>
+        <a href="https://dreamina.capcut.com/zh-tw/">dreamina.capcut.com</a>
+    </div>
 
 
-    
+    <div class="zen-card">
+        <div class="item-header">
+            <span class="emoji-box">✨</span>
+            <span class="item-title">即夢 (Jimeng)</span>🪬<a href=https://youtu.be/rBIRuVDWBuI>DEMO</a>
+        </div>
+        <a href="https://jimeng.jianying.com">jimeng.jianying.com</a>
+    </div>
+
+
+
+    <div class="zen-card">
+        <div class="item-header">
+            <span class="emoji-box">🕊️</span>
+            <span class="item-title">飛影 (HiFly)</span>🪬<A href=https://youtube.com/shorts/785HWcXOlZE?feature=share>DEMO</a>
+        </div>
+        <a href="https://hifly.cc">hifly.cc</a>
+    </div>
+
+    <div class="zen-card">
+        <div class="item-header">
+            <span class="emoji-box">🔊</span>
+            <span class="item-title">Vidnoz </span>🪬<a href=https://youtu.be/htXoOam5FC8>DEMO</a>
+        </div>
+        <a href="https://vidnoz.com">vidnoz.com</a>
+    </div>
+
+    <div class="zen-card">
+        <div class="item-header">
+            <span class="emoji-box">🤖</span>
+            <span class="item-title">HeyGen</span>
+        </div>
+        <a href="https://app.heygen.com">app.heygen.com</a>
+    </div>
+
+    <div class="zen-card">
+        <div class="item-header">
+            <span class="emoji-box">💻</span>
+            <span class="item-title">Edimakor</span>
+        </div>
+        <a href="https://edimakor.hitpaw.tw/features/ai-avatar.html">edimakor.hitpaw.tw</a>
+        <div class="alert-text">⚠️ {Software, 免費戶口不能做數字人}</div>
+    </div>
+
+    <footer>
+        &copy; 2026 ＤＡＮＮＹＵ.COM | avatar
+    </footer>
+</div>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
