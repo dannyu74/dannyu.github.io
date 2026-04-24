@@ -1,19 +1,130 @@
-﻿<html>
-
+<!DOCTYPE html>
+<html lang="zh-Hant">
 <head>
-<title>ＡＩ語音　</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎙️DANNYU.COM 8262 AI語音</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 60px 20px;
+            font-family: "PingFang HK", "Microsoft JhengHei", sans-serif;
+            background-color: #f0f4f8; /* 稍微加深一點底色襯托波紋 */
+            color: #334155;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-<base target=_blank>
-    <meta charset="big5">
+        /* 背景畫布 */
+        #wave-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
 
+        .main-container {
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            letter-spacing: 15px;
+            margin-bottom: 10px;
+            color: #1e293b;
+            font-weight: 300;
+            text-shadow: 0 2px 10px rgba(255,255,255,0.8);
+        }
+
+        .divider {
+            text-align: center;
+            color: #cbd5e1;
+            letter-spacing: 8px;
+            margin-bottom: 50px;
+            font-size: 0.8em;
+        }
+
+        /* 全域點擊框 */
+        .sonic-link {
+            text-decoration: none;
+            display: block;
+            margin-bottom: 18px;
+            color: inherit;
+        }
+
+        .sonic-card {
+            background: rgba(255, 255, 255, 0.4); /* 更透明，讓波紋透出來 */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            padding: 22px 30px;
+            display: flex;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .voice-icon {
+            margin-right: 20px;
+            font-size: 1.4em;
+            filter: grayscale(100%);
+            opacity: 0.4;
+            transition: 0.3s;
+        }
+
+        .content { flex-grow: 1; }
+
+        .brand-name {
+            font-size: 1.25em;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+            color: #1e293b;
+        }
+
+        .url-text {
+            font-size: 0.85em;
+            color: #64748b;
+            word-break: break-all;
+        }
+
+        /* Hover 效果 */
+        .sonic-link:hover .sonic-card {
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #38bdf8;
+            box-shadow: 0 15px 30px rgba(56, 189, 248, 0.15);
+        }
+
+        .sonic-link:hover .brand-name { color: #0284c7; }
+        .sonic-link:hover .voice-icon { filter: grayscale(0%); opacity: 1; }
+
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            color: #94a3b8;
+            font-size: 0.8em;
+            letter-spacing: 5px;
+        }
+    </style>
 </head>
+<body>
 
-<body text="green" background=wall1.gif alink=white link=purple vlink=green>
-<center>
-<h1>語音
-<br>
+<canvas id="wave-canvas"></canvas>
 
-
+<div class="main-container">
+    <h1>語音</h1>
 <font color="#ff0000">[]</font> <font color="#ff3300">[]</font> <font color="#ff6600">[]</font> 
 <font color="#ff9900">[]</font> <font color="#ffcc00">[]</font> <font color="#ffff00">[]</font> 
 <font color="#ccff00">[]</font> <font color="#99ff00">[]</font> <font color="#66ff00">[]</font> 
@@ -23,64 +134,173 @@
 <font color="#0066ff">[]</font> <font color="#0033ff">[]</font> <font color="#0000ff">[]</font> 
 <font color="#3300ff">[]</font> <font color="#6600ff">[]</font> <font color="#9900ff">[]</font> 
 <font color="#cc00ff">[]</font> <font color="#ff00ff">[]</font><br>
-</h1>
-<font size=6>
 
+    <a href="https://ttsmaker.com" class="sonic-link" target="_blank">
+        <div class="sonic-card">
+            <div class="voice-icon">🔔</div>
+            <div class="content">
+                <span class="brand-name">ttsmarker</span>
+                <span class="url-text">ttsmaker.com</span>
+            </div>
+        </div>
+    </a>
 
-ttsmarker
-<Br><a href=https://ttsmaker.com/>ttsmaker.com</a>
-    <p></p>
+    <a href="https://app.audiodub.ai/text-to-speech" class="sonic-link" target="_blank">
+        <div class="sonic-card">
+            <div class="voice-icon">🗣️</div>
+            <div class="content">
+                <span class="brand-name">Audiodub {有廣東話}</span>
+                <span class="url-text">https://app.audiodub.ai/text-to-speech</span>
+            </div>
+        </div>
+    </a>
 
-Audiodub {有廣東話}
-<br><a href=https://app.audiodub.ai/text-to-speech>https://app.audiodub.ai/text-to-speech</a>
-<p>
-   
+    <a href="https://voicv.com" class="sonic-link" target="_blank">
+        <div class="sonic-card">
+            <div class="voice-icon">🎙️</div>
+            <div class="content">
+                <span class="brand-name">Voicv</span>
+                <span class="url-text">https://voicv.com/?utm_source=INVC0F12424</span>
+            </div>
+        </div>
+    </a>
 
+    <a href="https://ttsmp3.com/" class="sonic-link" target="_blank">
+        <div class="sonic-card">
+            <div class="voice-icon">📻</div>
+            <div class="content">
+                <span class="brand-name">TTSMP3 (無廣東話)</span>
+                <span class="url-text">https://ttsmp3.com/</span>
+            </div>
+        </div>
+    </a>
 
-Voicv
-<br><a href=https://voicv.com/?utm_source=INVC0F12424>voicv.com</a>
-<p>
+    <a href="https://aivoicecloning.io/" class="sonic-link" target="_blank">
+        <div class="sonic-card">
+            <div class="voice-icon">🧬</div>
+            <div class="content">
+                <span class="brand-name">AI Voice Cloning (無廣東話)</span>
+                <span class="url-text">https://aivoicecloning.io/</span>
+            </div>
+        </div>
+    </a>
 
+    <a href="https://www.ttson.cn/" class="sonic-link" target="_blank">
+        <div class="sonic-card">
+            <div class="voice-icon">🐬</div>
+            <div class="content">
+                <span class="brand-name">海豚AI (有廣東話)</span>
+                <span class="url-text">https://www.ttson.cn/</span>
+            </div>
+        </div>
+    </a>
 
+    <a href="https://luvvoice.com/" class="sonic-link" target="_blank">
+        <div class="sonic-card">
+            <div class="voice-icon">💖</div>
+            <div class="content">
+                <span class="brand-name">Luvvoice (無廣東話, free clone)</span>
+                <span class="url-text">https://luvvoice.com/</span>
+            </div>
+        </div>
+    </a>
 
-TTSMP3(無廣東話)
-<br><a href=https://ttsmp3.com/>https://ttsmp3.com/
-</a>
-<p>
+    <a href="https://easyvoice.ioplus.tech/" class="sonic-link" target="_blank">
+        <div class="sonic-card">
+            <div class="voice-icon">📄</div>
+            <div class="content">
+                <span class="brand-name">EasyVoice (超長文本)</span>
+                <span class="url-text">https://easyvoice.ioplus.tech/</span>
+            </div>
+        </div>
+    </a>
 
-AI Voice Cloning(無廣東話)
-    <br><a href=https://aivoicecloning.io/>https://aivoicecloning.io/</a>
-    <p>
-        
-    </p>
+    <a href="https://ttsstudio.ai/" class="sonic-link" target="_blank">
+        <div class="sonic-card">
+            <div class="voice-icon">🏢</div>
+            <div class="content">
+                <span class="brand-name">TTSStudio</span>
+                <span class="url-text">https://ttsstudio.ai/</span>
+            </div>
+        </div>
+    </a>
 
-    海豚AI(有廣東話)
-    <br><a href=https://www.ttson.cn/>https://www.ttson.cn/</a>
-    <p></p>
+ <div class="sonic-link">
+        <div class="sonic-card">
+            <div class="voice-icon">🎭</div>
+            <div class="content">
+                <span class="brand-name">大餅變聲 (卡通版)</span>
+                <a href="https://www.mydown.com/soft/237/199237.shtml" class="url-text" target="_blank">https://www.mydown.com/soft/237/199237.shtml</a><br>
+                <a href="https://1drv.ms/u/c/9cf7c7bbc524c2b6/IQDuH2uRXEUTRrilrca0esKUAfmub0vcK1GaZ9avxRztcik?e=4dSEtS" class="download-link" target="_blank">☁️ 下載點 2</a>
+            </div>
+        </div>
+    </div>
 
-    Luvvoice(無廣東話, free clone)
-    <br><a href=https://luvvoice.com/>https://luvvoice.com/</a>
-    <p>
+  <font color="#ff0000">[]</font> <font color="#ff3300">[]</font> <font color="#ff6600">[]</font> 
+<font color="#ff9900">[]</font> <font color="#ffcc00">[]</font> <font color="#ffff00">[]</font> 
+<font color="#ccff00">[]</font> <font color="#99ff00">[]</font> <font color="#66ff00">[]</font> 
+<font color="#33ff00">[]</font> <font color="#00ff00">[]</font> <font color="#00ff33">[]</font> 
+<font color="#00ff66">[]</font> <font color="#00ff99">[]</font> <font color="#00ffcc">[]</font> 
+<font color="#00ffff">[]</font> <font color="#00ccff">[]</font> <font color="#0099ff">[]</font> 
+<font color="#0066ff">[]</font> <font color="#0033ff">[]</font> <font color="#0000ff">[]</font> 
+<font color="#3300ff">[]</font> <font color="#6600ff">[]</font> <font color="#9900ff">[]</font> 
+<font color="#cc00ff">[]</font> <font color="#ff00ff">[]</font><br>
 
-        EasyVoice(超長文本)
-        <br><a href=https://easyvoice.ioplus.tech/>https://easyvoice.ioplus.tech/</a>
-        <p></p>
+    <footer>
+        ８２６２ VOICE STUDIO | ＤＡＮＮＹＵ．ＣＯＭ
+    </footer>
+</div>
 
-    TTSStudio
-    <br><a href=https://ttsstudio.ai/>https://ttsstudio.ai/</a>
-    <p></p>
+<script>
+    const canvas = document.getElementById('wave-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, waves = [];
 
-    大餅變聲(卡通版)
-    <br><a href=https://www.mydown.com/soft/237/199237.shtml>https://www.mydown.com/soft/237/199237.shtml</a>
-    <p></p>
+    function init() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        waves = [];
+        // 增加到 6 條波紋，使用更多元的顏色
+        const colors = ['#38bdf8', '#818cf8', '#34d399', '#fb7185', '#facc15','#896c15','#156c15', '#a78bfa'];
+        for(let i=0; i<6; i++) {
+            waves.push({
+                y: height * (0.2 + (i * 0.12)), // 分佈在不同高度
+                amplitude: 30 + Math.random() * 40,
+                speed: 0.01 + Math.random() * 0.01,
+                offset: Math.random() * Math.PI * 2,
+                frequency: 0.003 + Math.random() * 0.004,
+                color: colors[i]
+            });
+        }
+    }
 
-    
-    
-        
+    function draw() {
+        ctx.clearRect(0, 0, width, height);
+        waves.forEach(wave => {
+            ctx.beginPath();
+            ctx.lineWidth = 4.5;
+            ctx.strokeStyle = wave.color;
+            ctx.globalAlpha = 0.15; // 保持透明度，讓疊加處好看
+            
+            for(let x=0; x<width; x++) {
+                // 複合正弦波公式，讓波動更不規則、更像真實聲波
+                const y = wave.y + 
+                          Math.sin(x * wave.frequency + wave.offset) * wave.amplitude +
+                          Math.sin(x * 0.01 + wave.offset * 0.5) * (wave.amplitude / 2);
+                
+                if(x === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+            wave.offset += wave.speed;
+        });
+        requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', init);
+    init();
+    draw();
+</script>
+
 </body>
 </html>
-
-
-
-
-
