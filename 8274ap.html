@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8274 AI 虛擬人行銷影片製作</title>
+    <style>
+        /* --- 1. 核心：青花幾何漣漪背景 (保證流動) --- */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fa; /* 瓷白色 */
+            font-family: "PingFang HK", "Microsoft JhengHei", sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 幾何背景層 */
+        .porcelain-bg {
+            position: fixed;
+            top: -10%; left: -10%;
+            width: 120%; height: 120%;
+            /* 使用強對比的黛青色 (rgba) 繪製古代海浪幾何紋樣 */
+            background-image: 
+                radial-gradient(circle at 50% 100%, transparent 50%, rgba(26, 82, 118, 0.06) 50%, rgba(26, 82, 118, 0.06) 55%, transparent 55%),
+                radial-gradient(circle at 50% 0%, transparent 50%, rgba(26, 82, 118, 0.06) 50%, rgba(26, 82, 118, 0.06) 55%, transparent 55%);
+            background-size: 60px 60px;
+            z-index: -1;
+            
+            /* 雙重動效組合：縮放呼吸 + 旋轉搖擺，確保肉眼絕對看得見變化 */
+            animation: waveBreathing 12s ease-in-out infinite alternate;
+        }
+
+        /* 幾何圖形呼吸與流動動畫 */
+        @keyframes waveBreathing {
+            0% {
+                transform: scale(1) rotate(0deg);
+                background-position: 0 0, 30px 30px;
+            }
+            50% {
+                background-position: 30px 0, 0 30px; /* 內部位移 */
+            }
+            100% {
+                transform: scale(1.08) rotate(2deg); /* 整體放大加微旋轉 */
+                background-position: 60px 0, -30px 30px;
+            }
+        }
+
+        /* --- 2. 頁面排版 --- */
+        .main-container {
+            max-width: 1100px;
+            width: 90%;
+            padding: 60px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .course-id {
+            font-size: 1.1rem;
+            color: #1a5276; /* 黛青 */
+            letter-spacing: 6px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            color: #1c2833;
+            letter-spacing: 4px;
+            line-height: 1.4;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        /* --- 3. 3 欄不對稱幾何 Grid --- */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        @media (max-width: 992px) { .grid-layout { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 650px) { .grid-layout { grid-template-columns: 1fr; } }
+
+        /* --- 4. 新古典幾何卡片 (切角設計) --- */
+        .porcelain-card {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(26, 82, 118, 0.15);
+            /* 幾何切角剪裁，做出像古代玉牌或器皿的硬朗線條 */
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+            padding: 30px 25px;
+            transition: all 0.35s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 140px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .porcelain-card:hover {
+            transform: translateY(-6px);
+            background: #ffffff;
+            border-color: #1a5276;
+            box-shadow: 0 12px 25px rgba(26, 82, 118, 0.1);
+        }
+
+        .tool-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #212f3d;
+            line-height: 1.4;
+        }
+
+        .tool-link {
+            font-size: 0.85rem;
+            color: #1a5276;
+            text-decoration: none;
+            word-break: break-all;
+            display: block;
+            padding: 10px;
+            background: #f0f4f8;
+            border-radius: 4px;
+            text-align: center;
+            transition: 0.2s;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+
+        .tool-link:hover {
+            background: #1a5276;
+            color: #ffffff;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 90px;
+            color: #a6acaf;
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 具體幾何流動背景 -->
+<div class="porcelain-bg"></div>
+
+<div class="main-container">
+    <header>
+        <div class="course-id">▍ 課程序號 8274</div>
+        <h1>人工智能 AI 虛擬人<br>行銷影片製作</h1>
+    </header>
+
+    <div class="grid-layout">
+        <!-- 1. Vheer -->
+        <div class="porcelain-card">
+            <span class="tool-name">Vheer</span>
+            <a href="https://Vheer.com" class="tool-link" target="_blank">Vheer.com</a>
+        </div>
+
+        <!-- 2. 文字生成腳本 (Duck) -->
+        <div class="porcelain-card">
+            <span class="tool-name">文字生成腳本 (Duck)</span>
+            <a href="https://duck.ai" class="tool-link" target="_blank">duck.ai</a>
+        </div>
+
+        <!-- 3. 文字生成腳本 (Copilot) -->
+        <div class="porcelain-card">
+            <span class="tool-name">文字生成腳本 (Copilot)</span>
+            <a href="https://copilot.microsoft.com" class="tool-link" target="_blank">copilot.microsoft.com</a>
+        </div>
+
+        <!-- 4. 數字人範本 -->
+        <div class="porcelain-card">
+            <span class="tool-name">數字人範本</span>
+            <a href="https://app.synthesia.io" class="tool-link" target="_blank">app.synthesia.io</a>
+        </div>
+
+        <!-- 5. 雙人數字人 -->
+        <div class="porcelain-card">
+            <span class="tool-name">雙人數字人 (+852)</span>
+            <a href="https://www.joypix.ai/app/dialogue-avatar/?invitation_code=6ce8eb" class="tool-link" target="_blank">www.joypix.ai</a>
+        </div>
+
+     
+
+        <!-- 6. 訊飛數字人 -->
+        <div class="porcelain-card">
+            <span class="tool-name">訊飛數字人 (+852)</span>
+            <a href="https://peiyin.xunfei.cn" class="tool-link" target="_blank">peiyin.xunfei.cn</a>
+        </div>
+
+
+
+        <!-- 7. 圖片移除水印 -->
+        <div class="porcelain-card">
+            <span class="tool-name">圖片移除水印</span>
+            <a href="https://phototune.ai/process-watermark" class="tool-link" target="_blank">phototune.ai</a>
+        </div>
+
+        <!-- 8. 影片移除水印 -->
+        <div class="porcelain-card">
+            <span class="tool-name">影片移除水印</span>
+            <a href="https://app.morphstudio.com" class="tool-link" target="_blank">app.morphstudio.com</a>
+        </div>
+
+        <!-- 9. 免費圖片轉提示詞 -->
+        <div class="porcelain-card">
+            <span class="tool-name">免費圖片轉提示詞生成器</span>
+            <a href="https://imageprompt.org" class="tool-link" target="_blank">imageprompt.org</a>
+        </div>
+
+        <!-- 10. Nanophoto -->
+        <div class="porcelain-card">
+            <span class="tool-name">Nanophoto (反向提示詞)</span>
+            <a href="https://nanophoto.ai/zh-TW/video-reverse-prompt" class="tool-link" target="_blank">nanophoto.ai</a>
+        </div>
+
+
+        <!-- 11. AI字幕 -->
+        <div class="porcelain-card">
+            <span class="tool-name">AI字幕</span>
+            <a href="https://cantosubai.com/" class="tool-link" target="_blank">cantosubai.com </a>
+        </div>
+
+
+
+
+    </div>
+
+    <footer>8274 AI ｜ 虛擬人行銷影片製作</footer>
+</div>
+
+</body>
+</html>
