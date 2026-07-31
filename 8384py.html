@@ -1,73 +1,247 @@
-﻿<html>
-
+<!DOCTYPE html>
+<html lang="zh-Hant">
 <head>
-<title>8384 字幕</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8384 字幕工具箱</title>
+    <style>
+        /* --- 1. 核心：純黑背景 + 高對比網格動畫 --- */
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft JhengHei", sans-serif;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            background-color: #000000; /* 純黑底色 */
+            position: relative;
+        }
 
-<base target=_blank>
-    <meta charset="big5">
+        /* 疊加一層動態平移的暗色網格 */
+        body::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                radial-gradient(circle, rgba(0, 255, 204, 0.15) 1.5px, transparent 1.5px);
+            background-size: 35px 35px;
+            animation: gridPan 20s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
 
+        @keyframes gridPan {
+            0% { transform: rotate(0deg) translateY(0); }
+            100% { transform: rotate(5deg) translateY(-50px); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 750px; /* 稍微拉寬以容納更大字體 */
+            width: 100%;
+            text-align: center;
+        }
+
+        /* --- 2. 大標題與彩虹發光條 --- */
+        h1 {
+            font-size: 3.2rem; /* 標題大幅放大 */
+            margin-bottom: 10px;
+            letter-spacing: 4px;
+            color: #00ffff; /* 高亮青色 */
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+        }
+
+        .rainbow-bar {
+            height: 6px;
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto 40px auto;
+            border-radius: 3px;
+            background: linear-gradient(90deg, 
+                #ff0000, #ff7f00, #ffff00, #00ff00, 
+                #00ffff, #0000ff, #8b00ff, #ff00ff);
+            background-size: 200% 100%;
+            animation: rainbowShift 3s linear infinite;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes rainbowShift {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+
+        /* --- 3. 卡片與高對比大字 --- */
+        .link-list {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .link-card {
+            background: #111111; /* 深黑卡片底色 */
+            border: 2px solid #222222;
+            border-radius: 14px;
+            padding: 24px;
+            text-align: left;
+            transition: all 0.25s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .link-card:hover {
+            transform: translateY(-4px);
+            border-color: #00ffff;
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
+            background: #161616;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* 工具名稱大字 */
+        .tool-title {
+            font-size: 1.6rem; /* 放大 */
+            font-weight: bold;
+            color: #ffffff; /* 純白最高對比 */
+            letter-spacing: 1px;
+        }
+
+        /* 標籤大字 */
+        .tool-tag {
+            font-size: 1.05rem; /* 放大 */
+            font-weight: bold;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: #1a2a2f;
+            color: #00ffcc;
+            border: 1.5px solid #00ffcc;
+        }
+
+        /* 網址連結高亮大字 */
+        .tool-link {
+            display: inline-block;
+            margin-top: 6px;
+            color: #ffff00; /* 亮黃色，黑底極度清晰 */
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.25rem; /* 放大 */
+            letter-spacing: 0.5px;
+            transition: color 0.2s, text-shadow 0.2s;
+        }
+
+        .tool-link:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px #ffff00;
+            text-decoration: underline;
+        }
+
+        /* 手機版適應 */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .tool-title { font-size: 1.35rem; }
+            .tool-link { font-size: 1.1rem; }
+            .tool-tag { font-size: 0.9rem; }
+        }
+    </style>
 </head>
+<body>
 
-<body text="green" background=wall2.gif alink=white link=purple vlink=green>
-<center>
-<h1>字幕
-<br>
+    <div class="container">
+        <h1>🎬 8384 字幕工具箱</h1>
+        
+        <div class="rainbow-bar"></div>
 
+        <div class="link-list">
+            
+            <!-- Cantosub AI -->
+            <div class="link-card" style="border-color: #ff0055;">
+                <div class="card-header">
+                    <span class="tool-title">Cantosub AI</span>
+                    <span class="tool-tag" style="color: #ff3388; border-color: #ff3388; background: #2a0815;">
+                        🔥 廣東話神器
+                    </span>
+                </div>
+                <a href="https://cantosubai.com/" target="_blank" class="tool-link">
+                    🔗 cantosubai.com
+                </a>
+            </div>
 
-<font color="#ff0000">[]</font> <font color="#ff3300">[]</font> <font color="#ff6600">[]</font> 
-<font color="#ff9900">[]</font> <font color="#ffcc00">[]</font> <font color="#ffff00">[]</font> 
-<font color="#ccff00">[]</font> <font color="#99ff00">[]</font> <font color="#66ff00">[]</font> 
-<font color="#33ff00">[]</font> <font color="#00ff00">[]</font> <font color="#00ff33">[]</font> 
-<font color="#00ff66">[]</font> <font color="#00ff99">[]</font> <font color="#00ffcc">[]</font> 
-<font color="#00ffff">[]</font> <font color="#00ccff">[]</font> <font color="#0099ff">[]</font> 
-<font color="#0066ff">[]</font> <font color="#0033ff">[]</font> <font color="#0000ff">[]</font> 
-<font color="#3300ff">[]</font> <font color="#6600ff">[]</font> <font color="#9900ff">[]</font> 
-<font color="#cc00ff">[]</font> <font color="#ff00ff">[]</font><br>
-</h1>
-<font size=6>
+            <!-- cSubtitle -->
+            <div class="link-card">
+                <div class="card-header">
+                    <span class="tool-title">cSubtitle</span>
+                    <span class="tool-tag">⏱️ 限3分鐘</span>
+                </div>
+                <a href="https://www.csubtitle.com/sub/" target="_blank" class="tool-link">
+                    🔗 www.csubtitle.com/sub
+                </a>
+            </div>
 
+            <!-- pyTranscriber v2.1 -->
+            <div class="link-card">
+                <div class="card-header">
+                    <span class="tool-title">pyTranscriber</span>
+                    <span class="tool-tag" style="color: #ffaa00; border-color: #ffaa00; background: #2a1f00;">
+                        ⚠️ 大食 慢
+                    </span>
+                </div>
+                <a href="https://pytranscriber.github.io/download/" target="_blank" class="tool-link">
+                    🔗 pytranscriber.github.io/download
+                </a>
+            </div>
 
+            <!-- pyTranscriber v1.9 -->
+            <div class="link-card">
+                <div class="card-header">
+                    <span class="tool-title">pyTranscriber (v1.9)</span>
+                    <span class="tool-tag" style="color: #00ff66; border-color: #00ff66; background: #002a10;">
+                        ⚡ 精巧夠快
+                    </span>
+                </div>
+                <a href="https://github.com/raryelcostasouza/pyTranscriber/releases/download/v1.9/pyTranscriber-1.9-win-installer.exe" target="_blank" class="tool-link">
+                    🔗 直接下載1.9軟件
+                </a>
+            </div>
 
+            <!-- subeasy -->
+            <div class="link-card">
+                <div class="card-header">
+                    <span class="tool-title">subeasy</span>
+                    <span class="tool-tag">📅 每日三次</span>
+                </div>
+                <a href="https://www.subeasy.ai/?invite_code=0ehe54" target="_blank" class="tool-link">
+                    🔗 www.subeasy.ai
+                </a>
+            </div>
 
-cSubtitle {限3分鐘}
-<br><a href=https://www.csubtitle.com/sub/>www.csubtitle.com/sub</a>
-<p>
+            <!-- Aegisub -->
+            <div class="link-card">
+                <div class="card-header">
+                    <span class="tool-title">Aegisub</span>
+                    <span class="tool-tag" style="color: #33ccff; border-color: #33ccff; background: #002233;">
+                        🛠️ 修改字幕軟件
+                    </span>
+                </div>
+                <a href="https://aegisub.org/zh-cn/" target="_blank" class="tool-link">
+                    🔗 aegisub.org
+                </a>
+            </div>
 
-
-pystranscriber {v2.1 大食 慢.}
-<br><a href=https://pytranscriber.github.io/download/>https://pytranscriber.github.io/download/
-</a>
-<p>
-
-
-pystranscriber {v1.9 精巧夠快}
-<br><a href=https://pytranscriber.github.io/download/>https://pytranscriber.github.io/download/
-</a>
-<p>
-
-
-subeasy {每日三次}
-<br><a href=https://www.subeasy.ai/?invite_code=0ehe54>www.subeasy.ai
-</a>
-<p>
-
-Aegisub {修改字幕軟件}
-    <br><a href=https://aegisub.org/zh-cn/>aegisub.org</a>
-    <p></p>
-
-
-
-
-
-
-
-
-
-
-
-
+        </div>
+    </div>
 
 </body>
 </html>
-
-
