@@ -21,7 +21,7 @@
             position: relative;
         }
 
-        /* 疊加一層動態平移的暗色網格 */
+        /* 疊加動態平移暗色網格 */
         body::before {
             content: "";
             position: absolute;
@@ -45,17 +45,17 @@
         .container {
             position: relative;
             z-index: 1;
-            max-width: 750px; /* 稍微拉寬以容納更大字體 */
+            max-width: 750px;
             width: 100%;
             text-align: center;
         }
 
         /* --- 2. 大標題與彩虹發光條 --- */
         h1 {
-            font-size: 3.2rem; /* 標題大幅放大 */
+            font-size: 3.2rem;
             margin-bottom: 10px;
             letter-spacing: 4px;
-            color: #00ffff; /* 高亮青色 */
+            color: #00ffff;
             text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
         }
 
@@ -86,7 +86,7 @@
         }
 
         .link-card {
-            background: #111111; /* 深黑卡片底色 */
+            background: #111111;
             border: 2px solid #222222;
             border-radius: 14px;
             padding: 24px;
@@ -111,17 +111,15 @@
             gap: 10px;
         }
 
-        /* 工具名稱大字 */
         .tool-title {
-            font-size: 1.6rem; /* 放大 */
+            font-size: 1.6rem;
             font-weight: bold;
-            color: #ffffff; /* 純白最高對比 */
+            color: #ffffff;
             letter-spacing: 1px;
         }
 
-        /* 標籤大字 */
         .tool-tag {
-            font-size: 1.05rem; /* 放大 */
+            font-size: 1.05rem;
             font-weight: bold;
             padding: 6px 14px;
             border-radius: 20px;
@@ -130,14 +128,13 @@
             border: 1.5px solid #00ffcc;
         }
 
-        /* 網址連結高亮大字 */
         .tool-link {
             display: inline-block;
             margin-top: 6px;
-            color: #ffff00; /* 亮黃色，黑底極度清晰 */
+            color: #ffff00;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.25rem; /* 放大 */
+            font-size: 1.25rem;
             letter-spacing: 0.5px;
             transition: color 0.2s, text-shadow 0.2s;
         }
@@ -148,12 +145,37 @@
             text-decoration: underline;
         }
 
+        /* 多連結排版 (適用於 Whisper 區域) */
+        .sub-link-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #333333;
+        }
+
+        .sub-link-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .sub-link-label {
+            font-size: 1.1rem;
+            color: #00ffcc;
+            font-weight: bold;
+            min-width: 100px;
+        }
+
         /* 手機版適應 */
         @media (max-width: 600px) {
             h1 { font-size: 2.2rem; }
             .tool-title { font-size: 1.35rem; }
             .tool-link { font-size: 1.1rem; }
             .tool-tag { font-size: 0.9rem; }
+            .sub-link-item { flex-direction: column; align-items: flex-start; gap: 4px; }
         }
     </style>
 </head>
@@ -166,6 +188,43 @@
 
         <div class="link-list">
             
+            <!-- 頂部置頂：Whisper 資源專區 -->
+            <div class="link-card" style="border-color: #00ffcc; background: #0a1518;">
+                <div class="card-header">
+                    <span class="tool-title">OpenAI Whisper</span>
+                    <span class="tool-tag" style="color: #00ffff; border-color: #00ffff; background: #003344;">
+                        🚀 核心 AI 模型
+                    </span>
+                </div>
+                
+                <div class="sub-link-group">
+                    <div class="sub-link-item">
+                        <span class="sub-link-label">📌 官方介紹:</span>
+                        <a href="https://openai.com/zh-Hant-HK/index/whisper/" target="_blank" class="tool-link">
+                            openai.com/whisper
+                        </a>
+                    </div>
+                    <div class="sub-link-item">
+                        <span class="sub-link-label">📥 下載 (GitHub):</span>
+                        <a href="https://github.com/const-me/whisper" target="_blank" class="tool-link">
+                            github.com/const-me/whisper
+                        </a>
+                    </div>
+                    <div class="sub-link-item">
+                        <span class="sub-link-label">🧠 模型 (cpp):</span>
+                        <a href="https://huggingface.co/ggerganov/whisper.cpp" target="_blank" class="tool-link">
+                            huggingface.co/.../whisper.cpp
+                        </a>
+                    </div>
+                    <div class="sub-link-item">
+                        <span class="sub-link-label">🤗 Hugging Face:</span>
+                        <a href="https://huggingface.co/ggerganov" target="_blank" class="tool-link">
+                            huggingface.co/ggerganov
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <!-- Cantosub AI -->
             <div class="link-card" style="border-color: #ff0055;">
                 <div class="card-header">
@@ -193,7 +252,7 @@
             <!-- pyTranscriber v2.1 -->
             <div class="link-card">
                 <div class="card-header">
-                    <span class="tool-title">pyTranscriber</span>
+                    <span class="tool-title">pyTranscriber (v2.1)</span>
                     <span class="tool-tag" style="color: #ffaa00; border-color: #ffaa00; background: #2a1f00;">
                         ⚠️ 大食 慢
                     </span>
@@ -211,8 +270,8 @@
                         ⚡ 精巧夠快
                     </span>
                 </div>
-                <a href="https://github.com/raryelcostasouza/pyTranscriber/releases/download/v1.9/pyTranscriber-1.9-win-installer.exe" target="_blank" class="tool-link">
-                    🔗 直接下載1.9軟件
+                <a href="https://pytranscriber.github.io/download/" target="_blank" class="tool-link">
+                    🔗 pytranscriber.github.io/download
                 </a>
             </div>
 
