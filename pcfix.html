@@ -1,114 +1,333 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="zh-Hant">
 <head>
-<title>DD PC FIX</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8069 PC FIX 電腦維修工具庫</title>
+    <style>
+        /* --- 1. 核心：純黑底色 + PCB 電路動態背景 --- */
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft JhengHei", sans-serif;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+            background-color: #000000;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-<base target=_blank>
-<meta charset="utf-8">
+        /* 背景電路動態線條 */
+        body::before {
+            content: "";
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background-image: 
+                linear-gradient(rgba(0, 210, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 210, 255, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: circuitPan 25s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
 
+        @keyframes circuitPan {
+            0% { transform: rotate(0deg) translateY(0); }
+            100% { transform: rotate(3deg) translateY(-40px); }
+        }
 
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 850px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* --- 2. 頁首與彩虹霓虹光條 --- */
+        h1 {
+            font-size: 3rem;
+            margin: 0 0 10px 0;
+            color: #00d2ff; /* 科技藍 */
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.8);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #888888;
+            margin-bottom: 20px;
+        }
+
+        .rainbow-bar {
+            height: 6px;
+            width: 100%;
+            max-width: 550px;
+            margin: 0 auto 35px auto;
+            border-radius: 3px;
+            background: linear-gradient(90deg, 
+                #ff0000, #ff7f00, #ffff00, #00ff00, 
+                #00ffff, #0000ff, #8b00ff, #ff00ff);
+            background-size: 200% 100%;
+            animation: rainbowShift 3s linear infinite;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes rainbowShift {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+
+        /* --- 3. 核心卡片與分類 --- */
+        .section-card {
+            background: #111111;
+            border: 2px solid #222222;
+            border-radius: 14px;
+            padding: 22px 25px;
+            margin-bottom: 22px;
+            text-align: left;
+            transition: all 0.25s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .section-card:hover {
+            border-color: #00d2ff;
+            box-shadow: 0 10px 25px rgba(0, 210, 255, 0.25);
+            background: #151515;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            border-bottom: 1px dashed #333333;
+            padding-bottom: 10px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00ffcc; /* 電光綠 */
+        }
+
+        /* 連結條目 */
+        .link-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .link-label {
+            font-size: 1.15rem;
+            color: #ffffff;
+            font-weight: bold;
+            min-width: 140px;
+        }
+
+        .tool-link {
+            color: #ffff00; /* 高對比亮黃 */
+            text-decoration: none;
+            font-size: 1.25rem;
+            font-weight: bold;
+            transition: color 0.2s, text-shadow 0.2s;
+        }
+
+        .tool-link:hover {
+            color: #ffffff;
+            text-shadow: 0 0 12px #ffff00;
+            text-decoration: underline;
+        }
+
+        /* 響應式微調 */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.1rem; }
+            .card-title { font-size: 1.25rem; }
+            .link-label { font-size: 1.05rem; min-width: 100%; }
+            .tool-link { font-size: 1.1rem; }
+        }
+    </style>
 </head>
+<body>
 
-<body text="green" background=wall2.gif alink=orange link=green vlink=black>
-<center>
-<font size=6>
+    <div class="container">
+        <h1>🔧 PC FIX 電腦維修工作站</h1>
+        <div class="subtitle">8069 家庭電腦基本修理與裝嵌實用資源</div>
+        
+        <div class="rainbow-bar"></div>
 
-<h2>※※※8069家庭電腦基本修理與裝嵌※※※
-<br><a href=https://www.hkftustsc.org/course/detail?code=8069&d=2>https://www.hkftustsc.org/course/detail?code=8069&d=2</a></h2>
+        <!-- 1. 課程資訊 -->
+        <div class="section-card" style="border-color: #ff0055; background: #1a080d;">
+            <div class="card-header">
+                <span class="card-title" style="color: #ff3388;">🎓 官方課程連結</span>
+            </div>
+            <div class="link-group">
+                <div class="link-item">
+                    <span class="link-label">8069 課程詳情:</span>
+                    <a href="https://www.hkftustsc.org/course/detail?code=8069&d=2" target="_blank" class="tool-link" style="color: #00ffff;">
+                        🔗 工會 8069 課程頁面
+                    </a>
+                </div>
+            </div>
+        </div>
 
+        <!-- 2. 效能天梯圖 -->
+        <div class="section-card">
+            <div class="card-header">
+                <span class="card-title">📊 CPU / GPU 效能天梯圖</span>
+            </div>
+            <div class="link-group">
+                <div class="link-item">
+                    <span class="link-label">CPU 天梯 (快科技):</span>
+                    <a href="https://www.mydrivers.com/zhuanti/tianti/cpu/index.html" target="_blank" class="tool-link">
+                        mydrivers.com/cpu
+                    </a>
+                </div>
+                <div class="link-item">
+                    <span class="link-label">CPU BenchMark:</span>
+                    <a href="https://www.cpubenchmark.net/" target="_blank" class="tool-link">
+                        cpubenchmark.net
+                    </a>
+                </div>
+                <div class="link-item">
+                    <span class="link-label">GPU 天梯 (快科技):</span>
+                    <a href="https://www.mydrivers.com/zhuanti/tianti/gpu/index.html" target="_blank" class="tool-link">
+                        mydrivers.com/gpu
+                    </a>
+                </div>
+            </div>
+        </div>
 
-CPU 性能
-<br><a href=https://www.mydrivers.com/zhuanti/tianti/cpu/index.html>https://www.mydrivers.com/zhuanti/tianti/cpu/index.html</a>
-<br>
-<br><a href=https://www.cpubenchmark.net/>https://www.cpubenchmark.net/</a>
-<p>
+        <!-- 3. 主機板與驅動 -->
+        <div class="section-card">
+            <div class="card-header">
+                <span class="card-title">🔌 原廠驅動與 BIOS 嗶聲</span>
+            </div>
+            <div class="link-group">
+                <div class="link-item">
+                    <span class="link-label">ASUS 華碩 Driver:</span>
+                    <a href="https://www.asus.com/hk/support/" target="_blank" class="tool-link">
+                        asus.com/hk/support
+                    </a>
+                </div>
+                <div class="link-item">
+                    <span class="link-label">ECS 精英 Driver:</span>
+                    <a href="https://www.ecs.com.tw/en/Product/Motherboard" target="_blank" class="tool-link">
+                        ecs.com.tw/motherboard
+                    </a>
+                </div>
+                <div class="link-item">
+                    <span class="link-label">底板嗶聲警報對照:</span>
+                    <a href="https://starpc.pixnet.net/blog/post/6541865-%5B%E6%95%99%E5%AD%B8%5D%E4%B8%BB%E6%A9%9F%E6%9D%BFbios-%E5%97%B6%E8%81%B2%E9%8C%AF%E8%AA%A4%E6%8F%90%E7%A4%BA-%E8%AD%A6%E5%91%8A%E8%A1%A8" target="_blank" class="tool-link">
+                        主機板 BIOS 嗶聲錯誤對照表
+                    </a>
+                </div>
+            </div>
+        </div>
 
-Display Card 性能
-<Br><a href=https://www.mydrivers.com/zhuanti/tianti/gpu/index.html>https://www.mydrivers.com/zhuanti/tianti/gpu/index.html</a>
-<p>
+        <!-- 4. 系統 ISO 與硬碟診斷 -->
+        <div class="section-card">
+            <div class="card-header">
+                <span class="card-title">💿 Windows ISO 與硬碟工具</span>
+            </div>
+            <div class="link-group">
+                <div class="link-item">
+                    <span class="link-label">Windows 10 ISO:</span>
+                    <a href="https://www.microsoft.com/zh-hk/software-download/windows10" target="_blank" class="tool-link">
+                        microsoft.com/windows10
+                    </a>
+                </div>
+                <div class="link-item">
+                    <span class="link-label">Windows 11 ISO:</span>
+                    <a href="https://www.microsoft.com/zh-tw/software-download/windows11" target="_blank" class="tool-link">
+                        microsoft.com/windows11
+                    </a>
+                </div>
+                <div class="link-item">
+                    <span class="link-label">Seagate 下載:</span>
+                    <a href="https://www.seagate.com/tw/zh/support/downloads/" target="_blank" class="tool-link">
+                        seagate.com/support
+                    </a>
+                </div>
+                <div class="link-item">
+                    <span class="link-label">Western Digital (WD):</span>
+                    <a href="https://support.wdc.com/downloads.aspx?lang=en" target="_blank" class="tool-link">
+                        support.wdc.com
+                    </a>
+                </div>
+                <div class="link-item">
+                    <span class="link-label">CrystalDiskInfo:</span>
+                    <a href="https://crystalmark.info/en/software/crystaldiskinfo/" target="_blank" class="tool-link">
+                        crystalmark.info/crystaldiskinfo
+                    </a>
+                </div>
+            </div>
+        </div>
 
-ASUS Driver
-<br><a href=https://www.asus.com/hk/support/>https://www.asus.com/hk/support/</a>
-<p>
+        <!-- 5. 系統備份、防毒與燒機測試 -->
+        <div class="section-card">
+            <div class="card-header">
+                <span class="card-title">🧪 系統備份 / 檢測 / 燒機工具</span>
+            </div>
+            <div class="link-group">
+                <div class="link-item">
+                    <span class="link-label">EaseUS Todo Backup:</span>
+                    <a href="https://www.easeus.com/backup-software/tb-free.html" target="_blank" class="tool-link">
+                        easeus.com/tb-free
+                    </a>
+                </div>
+                <div class="link-item">
+                    <span class="link-label">AOMEI Clone:</span>
+                    <a href="https://www.aomeitech.com/clone-software/" target="_blank" class="tool-link">
+                        aomeitech.com/clone
+                    </a>
+                </div>
+                <div class="link-item">
+                    <span class="link-label">ESET 清除工具:</span>
+                    <a href="https://www.eset.com/us/download/tools-and-utilities/" target="_blank" class="tool-link">
+                        eset.com/tools
+                    </a>
+                </div>
+                <div class="link-item">
+                    <span class="link-label">Speedtest 網速:</span>
+                    <a href="https://www.speedtest.net/" target="_blank" class="tool-link">
+                        speedtest.net
+                    </a>
+                </div>
+                <div class="link-item">
+                    <span class="link-label">Prime95 CPU 壓測:</span>
+                    <a href="https://prime95.net/" target="_blank" class="tool-link">
+                        prime95.net
+                    </a>
+                </div>
+                <div class="link-item">
+                    <span class="link-label">3DMark 跑分:</span>
+                    <a href="https://www.3dmark.com/" target="_blank" class="tool-link">
+                        3dmark.com
+                    </a>
+                </div>
+                <div class="link-item">
+                    <span class="link-label">CCleaner 清理:</span>
+                    <a href="https://www.ccleaner.com/" target="_blank" class="tool-link">
+                        ccleaner.com
+                    </a>
+                </div>
+            </div>
+        </div>
 
-
-ECS Driver
-<br><a href=https://www.ecs.com.tw/en/Product/Motherboard>https://www.ecs.com.tw/en/Product/Motherboard</a>
-<p>
-
-
-Win ISO
-<Br><a href=https://www.microsoft.com/zh-hk/software-download/windows10>https://www.microsoft.com/zh-hk/software-download/windows10</a>
-  <Br><a href=https://www.microsoft.com/zh-tw/software-download/windows11>https://www.microsoft.com/zh-tw/software-download/windows11</a>
-<p>
-
-
-Seagate
-<Br><a href=https://www.seagate.com/tw/zh/support/downloads/>https://www.seagate.com/tw/zh/support/downloads/</a>
-<p>
-
-Wd 
-<Br><a href=https://support.wdc.com/downloads.aspx?lang=en>https://support.wdc.com/downloads.aspx?lang=en</a>
-<p>
-
-
-EaseUs TODO Backup
-<br><a href=https://www.easeus.com/backup-software/tb-free.html>https://www.easeus.com/backup-software/tb-free.html</a>
-<P>
-
-AOME
-<br><a href=https://www.aomeitech.com/clone-software/>https://www.aomeitech.com/clone-software/</a>
-<P>
-  
-ESET
-<br><a href=https://www.eset.com/us/download/tools-and-utilities/>https://www.eset.com/us/download/tools-and-utilities/</a>
-<P>
-
-SPEEDTEST
-<br><a href=https://www.speedtest.net/>https://www.speedtest.net/</a>
-<P>
-
-Prime95
-  <Br><a href=https://prime95.net/>https://prime95.net/</a>
-<p></p>
-3DMARK
-  <br><a href=https://www.3dmark.com/>https://www.3dmark.com/</a>
-  <p></p>
-
-
-CrystalDiskInfo
-  <br><a href=https://crystalmark.info/en/software/crystaldiskinfo/>https://crystalmark.info/en/software/crystaldiskinfo/</a>
-  <p>
-    
-  </p>
-  
-CCleaner
-<br><a href=https://www.ccleaner.com/>https://www.ccleaner.com/</a>
-<p>
-
-
-底板 嗶嗶聲
-<br><a href=https://starpc.pixnet.net/blog/post/6541865-%5B%E6%95%99%E5%AD%B8%5D%E4%B8%BB%E6%A9%9F%E6%9D%BFbios-%E5%97%B6%E8%81%B2%E9%8C%AF%E8%AA%A4%E6%8F%90%E7%A4%BA-%E8%AD%A6%E5%91%8A%E8%A1%A8>https://starpc.pixnet.net/blog/post/</a>
-<p>
-
-
-
-<font color="#ff0000">[]</font> <font color="#ff3300">[]</font> <font color="#ff6600">[]</font> 
-<font color="#ff9900">[]</font> <font color="#ffcc00">[]</font> <font color="#ffff00">[]</font> 
-<font color="#ccff00">[]</font> <font color="#99ff00">[]</font> <font color="#66ff00">[]</font> 
-<font color="#33ff00">[]</font> <font color="#00ff00">[]</font> <font color="#00ff33">[]</font> 
-<font color="#00ff66">[]</font> <font color="#00ff99">[]</font> <font color="#00ffcc">[]</font> 
-<font color="#00ffff">[]</font> <font color="#00ccff">[]</font> <font color="#0099ff">[]</font> 
-<font color="#0066ff">[]</font> <font color="#0033ff">[]</font> <font color="#0000ff">[]</font> 
-<font color="#3300ff">[]</font> <font color="#6600ff">[]</font> <font color="#9900ff">[]</font> 
-<font color="#cc00ff">[]</font> <font color="#ff00ff">[]</font><br>
-
-<p>
-
+    </div>
 
 </body>
 </html>
-
-
-
-
