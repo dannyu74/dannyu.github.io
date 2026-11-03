@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8059 菲林舊相數位化與沖掃服務總匯</title>
+    <style>
+        /* --- 1. 核心：純黑底色 + 動態微光網格背景 --- */
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft JhengHei", sans-serif;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+            background-color: #000000;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background-image: 
+                linear-gradient(rgba(255, 120, 0, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 120, 0, 0.1) 1px, transparent 1px);
+            background-size: 35px 35px;
+            animation: gridPan 25s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gridPan {
+            0% { transform: rotate(0deg) translateY(0); }
+            100% { transform: rotate(3deg) translateY(-40px); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 850px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* --- 2. 大標題與彩虹發光條 --- */
+        h1 {
+            font-size: 3rem;
+            margin: 0 0 10px 0;
+            color: #ff7800; /* 復古底片橘 */
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(255, 120, 0, 0.8);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #dddddd;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .rainbow-bar {
+            height: 6px;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            border-radius: 3px;
+            background: linear-gradient(90deg, 
+                #ff0000, #ff7f00, #ffff00, #00ff00, 
+                #00ffff, #0000ff, #8b00ff, #ff00ff);
+            background-size: 200% 100%;
+            animation: rainbowShift 3s linear infinite;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes rainbowShift {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 0%; }
+        }
+
+        /* 大分類標題 */
+        .category-title {
+            text-align: left;
+            font-size: 1.9rem;
+            font-weight: 900;
+            color: #ffaa00;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #ffaa00;
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 10px rgba(255, 170, 0, 0.4);
+        }
+
+        /* --- 3. 高對比大字卡片 --- */
+        .link-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .link-card {
+            background: #181818;
+            border: 2px solid #333333;
+            border-radius: 14px;
+            padding: 24px 28px;
+            text-align: left;
+            transition: all 0.25s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+        }
+
+        .link-card:hover {
+            transform: translateY(-4px);
+            border-color: #ff7800;
+            box-shadow: 0 10px 25px rgba(255, 120, 0, 0.35);
+            background: #202020;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .tool-title {
+            font-size: 1.65rem;
+            font-weight: bold;
+            color: #ffffff; /* 純正白字 */
+            letter-spacing: 1px;
+        }
+
+        .tool-tag {
+            font-size: 1.05rem;
+            font-weight: bold;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: #2a1a10;
+            color: #ffaa00;
+            border: 2px solid #ffaa00;
+        }
+
+        .tool-link {
+            display: inline-block;
+            margin-top: 8px;
+            color: #ffff00; /* 高亮亮黃色 */
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
+            transition: color 0.2s, text-shadow 0.2s;
+            word-break: break-all;
+        }
+
+        .tool-link:hover {
+            color: #ffffff;
+            text-shadow: 0 0 12px #ffff00;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .tool-title { font-size: 1.4rem; }
+            .tool-link { font-size: 1.15rem; }
+            .tool-tag { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🎞️ 8059 菲林舊相資源庫</h1>
+        <div class="subtitle">舊相拯救、菲林掃瞄設備與專業沖掃曬相服務資源總匯</div>
+        
+        <div class="rainbow-bar"></div>
+
+        <!-- ================= 分區 1: 舊相保存與修復教學 ================= -->
+        <div class="category-title">🆘 舊相拯救與修復教學</div>
+        <div class="link-list">
+            
+            <div class="link-card" style="border-color: #ff0055; background: #220a12;">
+                <div class="card-header">
+                    <span class="tool-title">相片黏在一起了，怎麼辦？</span>
+                    <span class="tool-tag" style="color: #ff66b2; border-color: #ff66b2; background: #3a0d20;">
+                        💡 急救技巧
+                    </span>
+                </div>
+                <a href="https://www.trailstudio.com.hk/blog/20131104-1/" target="_blank" class="tool-link" style="color: #00ffff;">
+                    🔗 trailstudio.com.hk (相片處理教學)
+                </a>
+            </div>
+
+            <div class="link-card">
+                <div class="card-header">
+                    <span class="tool-title">CZUR - How to Scan Photos</span>
+                    <span class="tool-tag">📖 官方教學</span>
+                </div>
+                <a href="https://shop.czur.com/blogs/blog/how-to-scan-photos" target="_blank" class="tool-link">
+                    🔗 shop.czur.com (How to Scan Photos)
+                </a>
+            </div>
+
+            <div class="link-card">
+                <div class="card-header">
+                    <span class="tool-title">QromaScan</span>
+                    <span class="tool-tag">💡 快速標籤掃瞄</span>
+                </div>
+                <a href="https://www.kickstarter.com/projects/qroma/qromascan-scan-and-tag-your-photos-quickly-using-y" target="_blank" class="tool-link">
+                    🔗 Kickstarter (QromaScan 專案)
+                </a>
+            </div>
+
+        </div>
+
+        <!-- ================= 分區 2: 菲林與相片掃瞄器材 ================= -->
+        <div class="category-title" style="color: #00d2ff; border-color: #00d2ff;">📸 菲林與相片掃瞄設備</div>
+        <div class="link-list">
+            
+            <div class="link-card" style="border-color: #00d2ff;">
+                <div class="card-header">
+                    <span class="tool-title">Plustek 底片掃瞄器系列</span>
+                    <span class="tool-tag" style="color: #00ffff; border-color: #00ffff; background: #003344;">🏢 原廠產品頁</span>
+                </div>
+                <a href="https://plustek.com/tw/products/index.php?products=film-photo-scanners" target="_blank" class="tool-link">
+                    🔗 plustek.com (Film & Photo Scanners)
+                </a>
+            </div>
+
+            <div class="link-card">
+                <div class="card-header">
+                    <span class="tool-title">Plustek OpticFilm 8200i Ai</span>
+                    <span class="tool-tag" style="color: #33ccff; border-color: #33ccff; background: #002233;">🛒 友和 YOHO</span>
+                </div>
+                <a href="https://www.yohohongkong.com/zh-hk/product/72892-Plustek-OpticFilm-8200-Ai-%E5%BA%95%E7%89%87%E6%8E%83%E7%9E%84%E5%99%A8-116-28-8200I-A-%E9%A6%99%E6%B8%AF%E8%A1%8C%E8%B2%A8" target="_blank" class="tool-link">
+                    🔗 yohohongkong.com (Plustek 8200i Ai 香港行貨)
+                </a>
+            </div>
+
+            <div class="link-card">
+                <div class="card-header">
+                    <span class="tool-title">Epson Perfection V850 Pro</span>
+                    <span class="tool-tag" style="color: #ffcc00; border-color: #ffcc00; background: #2a2200;">⭐ 專業旗艦款</span>
+                </div>
+                <a href="https://www3.epson.com.hk/zh-TC/product_categories/photo-scanners" target="_blank" class="tool-link">
+                    🔗 epson.com.hk (Epson 專業相片與底片掃瞄器)
+                </a>
+            </div>
+
+            <!-- 已修復 Kodak 連結 -->
+            <div class="link-card" style="border-color: #ffaa00;">
+                <div class="card-header">
+                    <span class="tool-title">Kodak - Slide N Scan 便攜式掃瞄器</span>
+                    <span class="tool-tag" style="color: #ffaa00; border-color: #ffaa00; background: #2a1f00;">🛒 HKTVmall 搜尋</span>
+                </div>
+                <a href="https://www.hktvmall.com/hktv/zh/search_a?keyword=Slide%20N%20Scan" target="_blank" class="tool-link">
+                    🔗 hktvmall.com (搜尋 Kodak Slide N Scan)
+                </a>
+            </div>
+
+        </div>
+
+        <!-- ================= 分區 3: 菲林沖掃與曬相服務 ================= -->
+        <div class="category-title" style="color: #ff3388; border-color: #ff3388;">🎞️ 菲林沖掃與網上曬相服務</div>
+        <div class="link-list">
+            
+            <div class="link-card">
+                <div class="card-header">
+                    <span class="tool-title">Megatoni Production</span>
+                    <span class="tool-tag" style="color: #ff3388; border-color: #ff3388; background: #3a0d20;">📸 菲林沖掃</span>
+                </div>
+                <a href="http://www.megatoniproduction.com/Film/zh-hk_Film_Main.html" target="_blank" class="tool-link">
+                    🔗 megatoniproduction.com/Film
+                </a>
+            </div>
+
+            <div class="link-card">
+                <div class="card-header">
+                    <span class="tool-title">Showa Scan (昭和菲林服務)</span>
+                    <span class="tool-tag" style="color: #00ffcc; border-color: #00ffcc; background: #003322;">✨ 2026 最新服務</span>
+                </div>
+                <a href="https://showa-store.com/pages/film-service-2026" target="_blank" class="tool-link">
+                    🔗 showa-store.com/pages/film-service-2026
+                </a>
+            </div>
+
+            <div class="link-card">
+                <div class="card-header">
+                    <span class="tool-title">彩圖麗 (Colorluxe Express)</span>
+                    <span class="tool-tag">👥 Facebook 專頁</span>
+                </div>
+                <a href="https://www.facebook.com/ColorluxeExpress" target="_blank" class="tool-link">
+                    🔗 facebook.com/ColorluxeExpress
+                </a>
+            </div>
+
+            <div class="link-card">
+                <div class="card-header">
+                    <span class="tool-title">天然曬相 (Sky Photo)</span>
+                    <span class="tool-tag">🖼️ 網上曬相平台</span>
+                </div>
+                <a href="https://print.skyphoto.com.hk/printsopt" target="_blank" class="tool-link">
+                    🔗 print.skyphoto.com.hk/printsopt
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
