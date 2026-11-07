@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danny U 時間表</title>
+    <title>Danny U 時間表 - 2026秋季版</title>
     <style>
-        /* --- 1. 核心底色：極光曜石黑 + 現代速度感斜線網格 --- */
         body {
-            background-color: #0b0d17; /* 極酷曜石黑 */
+            background-color: #000000;
             background-image: 
-                linear-gradient(135deg, rgba(147, 51, 234, 0.07) 25%, transparent 25%), 
-                linear-gradient(225deg, rgba(147, 51, 234, 0.07) 25%, transparent 25%), 
-                linear-gradient(45deg, rgba(147, 51, 234, 0.07) 25%, transparent 25%), 
-                linear-gradient(315deg, rgba(147, 51, 234, 0.07) 25%, #0b0d17 25%);
+                linear-gradient(135deg, rgba(255, 122, 0, 0.1) 25%, transparent 25%), 
+                linear-gradient(225deg, rgba(255, 122, 0, 0.1) 25%, transparent 25%), 
+                linear-gradient(45deg, rgba(255, 122, 0, 0.1) 25%, transparent 25%), 
+                linear-gradient(315deg, rgba(255, 122, 0, 0.1) 25%, #000000 25%);
             background-position: 40px 0, 40px 0, 0 0, 0 0;
-            background-size: 80px 80px; /* 具備空間感的潮流幾何網格 */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+            background-size: 80px 80px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft JhengHei", sans-serif;
             margin: 0;
             padding: 40px;
             display: flex;
@@ -25,7 +24,6 @@
             color: #ffffff;
         }
 
-        /* 左右並排佈局 */
         .wrapper {
             display: flex;
             flex-direction: row; 
@@ -35,7 +33,6 @@
             align-items: flex-start;
         }
 
-        /* --- 2. 左邊主內容：極光霓虹標題與課表 --- */
         .main-content {
             flex: 2.3;
             display: flex;
@@ -44,12 +41,12 @@
         }
 
         .header-tag {
-            background: linear-gradient(135deg, #9333ea, #ff7a00); /* 電光紫 到 活力橘 漸變 */
+            background: linear-gradient(135deg, #ff4500, #ff8c00);
             padding: 15px 45px;
             border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(147, 51, 234, 0.4);
+            box-shadow: 0 8px 32px rgba(255, 69, 0, 0.5);
             margin-bottom: 35px;
-            transform: skewX(-4deg); /* 帶有速度感的傾斜設計 */
+            transform: skewX(-4deg);
         }
 
         .main-title {
@@ -57,23 +54,23 @@
             color: #ffffff;
             letter-spacing: 2px;
             font-weight: 900;
-            font-size: 1.9rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-size: 2.1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .poster-container {
-            background: #16192b; /* 暗色內襯 */
-            padding: 12px;
-            border: 2px solid #2a2e4a;
+            background: #111111;
+            padding: 20px;
+            border: 2px solid #ff8c00;
             border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 50px rgba(255, 140, 0, 0.3);
             width: 100%;
             box-sizing: border-box;
-            transition: border-color 0.3s;
-        }
-
-        .poster-container:hover {
-            border-color: #9333ea; /* 懸停時邊框發光 */
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .course-img {
@@ -83,62 +80,70 @@
             border-radius: 8px;
         }
 
+        /* 圖片尚未上載時的提示文字樣式 */
+        .img-placeholder {
+            color: #ffaa00;
+            font-size: 1.4rem;
+            font-weight: bold;
+            line-height: 1.8;
+        }
+
         .download-btn {
             margin-top: 35px;
-            background: #ffffff; 
-            color: #0b0d17;
-            padding: 14px 40px;
+            background: #ffff00;
+            color: #000000;
+            padding: 16px 45px;
             border: none;
             border-radius: 30px;
-            font-weight: bold;
+            font-weight: 900;
+            font-size: 1.2rem;
             letter-spacing: 1px;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(255, 255, 0, 0.4);
         }
 
         .download-btn:hover {
-            background: #ff7a00; /* 懸停變橘色 */
-            color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(255, 122, 0, 0.4);
+            background: #ffffff;
+            color: #000000;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255, 255, 255, 0.6);
         }
 
-        /* --- 3. 右邊側邊欄：潮流半透明玻璃提示卡 --- */
         .sidebar {
             flex: 1;
             margin-top: 90px;
-            min-width: 280px;
+            min-width: 300px;
         }
 
         .ancient-scroll-note {
-            background: rgba(22, 25, 43, 0.85);
-            backdrop-filter: blur(10px); /* 現代毛玻璃質感 */
+            background: #161616;
             padding: 30px 25px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid #ff8c00;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
             box-sizing: border-box;
         }
 
         .scroll-title {
             margin-top: 0; 
-            color: #ff7a00; /* 活力珊瑚橘 */
-            letter-spacing: 1px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            border-bottom: 2px solid #2a2e4a;
+            color: #ffaa00;
+            letter-spacing: 1.5px;
+            font-size: 1.5rem;
+            font-weight: 900;
+            border-bottom: 2px dashed #444444;
             padding-bottom: 12px;
             text-align: center;
         }
 
         .scroll-text {
-            color: #cbd5e1;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            line-height: 1.7;
             text-align: left;
-            margin: 20px 0;
-            padding-left: 20px;
+            margin: 18px 0;
+            padding-left: 24px;
             position: relative;
         }
         
@@ -146,44 +151,50 @@
             content: "⚡";
             position: absolute;
             left: 0;
-            color: #9333ea; /* 電光紫符號 */
+            color: #ffff00;
         }
 
         .whatsapp-btn {
             display: block;
             margin: 30px 0 15px 0;
-            padding: 14px;
-            background: linear-gradient(135deg, #25d366, #128c7e); /* 保留經典醒目綠但做成漸變 */
-            color: white;
+            padding: 16px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: #ffffff;
             text-decoration: none;
             border-radius: 12px;
             text-align: center;
-            font-weight: bold;
+            font-weight: 900;
+            font-size: 1.15rem;
             letter-spacing: 1px;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
         }
 
         .whatsapp-btn:hover {
             transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
         }
 
         .update-date {
             margin-top: 25px;
-            font-size: 0.8rem;
-            color: #64748b;
-            border-top: 1px solid #2a2e4a;
+            font-size: 0.95rem;
+            color: #aaaaaa;
+            border-top: 1px solid #333333;
             padding-top: 15px;
             text-align: center;
         }
 
-        /* 手機版響應式適應 */
+        .update-date strong {
+            color: #00ffff;
+            font-size: 1.05rem;
+        }
+
         @media (max-width: 950px) {
             body { padding: 20px; }
             .wrapper { flex-direction: column; align-items: center; gap: 30px; }
-            .sidebar { margin-top: 10px; width: 100%; max-width: 400px; }
+            .sidebar { margin-top: 10px; width: 100%; max-width: 450px; }
             .header-tag { padding: 12px 30px; }
+            .main-title { font-size: 1.7rem; }
         }
     </style>
 </head>
@@ -193,24 +204,30 @@
         <!-- 左邊主內容 -->
         <div class="main-content">
             <div class="header-tag">
-                <h1 class="main-title">🔥 二零二六 盛夏時間表</h1>
+                <h1 class="main-title">🍂 二零二六 秋季時間表</h1>
             </div>
 
             <div class="poster-container">
-                <img src="202607.jpg" alt="課程表" class="course-img">
+                <!-- 提示：請確定你的圖片檔名是 202610.jpg 並與 index.html 放同一夾 -->
+                <img src="202610.jpg" alt="2026秋季課程表" class="course-img" onerror="this.style.display='none'; document.getElementById('error-msg').style.display='block';">
+                
+                <div id="error-msg" class="img-placeholder" style="display:none;">
+                    ⚠️ 尚未上載時間表圖片 (202610.jpg)<br>
+                    <span style="font-size: 1rem; color: #cccccc; font-weight: normal;">請將圖片檔案放入 GitHub 倉庫中。</span>
+                </div>
             </div>
 
-            <a href="202607.jpg" download class="download-btn">⚡ 下載完整課程表 (JPG)</a>
+            <a href="202610.jpg" download class="download-btn">⚡ 下載秋季完整課程表 (JPG)</a>
         </div>
 
         <!-- 右邊側邊欄 -->
         <div class="sidebar">
             <div class="ancient-scroll-note">
-                <h3 class="scroll-title">🌟 溫馨提示</h3>
+                <h3 class="scroll-title">🌟 2026/27 秋季溫馨提示</h3>
                 
-                <div class="scroll-text">🥛 熱到嘔，上電腦班，涼冷氣</div>
-                <div class="scroll-text">💪 保持身體健康</div>
-                <div class="scroll-text">🤔 有咩問題，直接 Whatsapp 我吧！</div>
+                <div class="scroll-text">🍂 秋風起，三蛇肥，學電腦！</div>
+                <div class="scroll-text">💪 保持身體健康，學ＡＩ最實際。</div>
+                <div class="scroll-text">🤔 有咩疑問，What我吧！</div>
                 
                 <a href="https://wa.me/85291548979" class="whatsapp-btn" target="_blank">
                     💬 WhatsApp 聯繫
@@ -218,7 +235,7 @@
 
                 <div class="update-date">
                     📅 最後更新日期：<br>
-                    <strong>2026-07-15</strong>
+                    <strong>2026-11-07</strong>
                 </div>
             </div>
         </div>
